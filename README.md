@@ -9,17 +9,6 @@
 - Búsqueda de recetas por ingredientes
 - Interfaz sencilla y amigable
 
-## Instalación
-
-1. Clona este repositorio:
-   ```
-   git clone https://github.com/tu-usuario/StudyFoodie.git
-   ```
-2. Abre el archivo `index.html` en tu navegador.
-
-## Contribución
-
-¡Las contribuciones son bienvenidas! Por favor, crea un fork y envía un pull request.
 
 ## Licencia
 
