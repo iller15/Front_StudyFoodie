@@ -1,0 +1,145 @@
+:root {
+      --font-primary: 'Poppins', sans-serif;
+      --color-background-1: #ffffff;
+      --color-background-2: #f4f5f9;
+      --color-background-3: #f5f5f5;
+      --color-text-1: #868889;
+      --color-text-2: #000000;
+      --color-text-3: #1a0dab;
+      --color-border: #ebebeb;
+      --color-primary: #aedc81;
+      --color-primary-dark: #6cc51d;
+      --color-primary-light: #ebffd7;
+    }
+
+    body {
+      font-family: var(--font-primary);
+      background-color: var(--color-background-1);
+      color: var(--color-text-2);
+      margin: 0;
+      padding: 0;
+    }
+
+    p {
+      margin: 0;
+      padding: 0;
+    }
+    input {
+      outline: none;
+      border: none;
+      background-color: transparent;
+      font-family: var(--font-primary);
+    }
+
+    .phone-navbar {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 25px;
+    }
+
+    .section-title {
+      display: flex;
+      position: relative;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 0 35px 0;
+    }
+    .section-title_text {
+      font-size: 25px;
+      font-weight: medium;
+    }
+    .section-title_icon {
+      position: absolute;
+      left: 25px;
+    }
+
+    .section-main {
+      height: 100vh;
+      background-color: var(--color-background-2);
+    }
+
+    .section-main_container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+      padding-top: 32px;
+    }
+
+    .section-tracking  {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 370px;
+      margin: 0 auto 30px auto;
+    }
+    .section-tracking_item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .tracking-circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--color-background-1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--color-text-1);
+      border: 1px solid var(--color-border);
+    }
+    .tracking-circle.active {
+      background-color: var(--color-primary-dark);
+      color: var(--color-background-1);
+    }
+    .tracking_text {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-text-1);
+    }
+
+    .section-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .input-text_container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 90%;
+      margin: 0 auto;
+      padding: 10px 15px;
+      background-color: var(--color-background-1);
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .input-text_container input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      color: var(--color-text-2);
+    }
+
+    .save-direction {
+      display: flex;
+      justify-content: start;
+      width: 100%;
+    }
+
+    .section-form_button {
+      width: 90%;
+      margin: 20px auto;
+      padding: 15px;
+      background-color: var(--color-primary-dark);
+      color: var(--color-background-1);
+      border-radius: 8px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
