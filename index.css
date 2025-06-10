@@ -1,0 +1,204 @@
+:root {
+    --font-primary: 'Poppins', sans-serif;
+    --color-background-1: #ffffff;
+    --color-background-2: #f4f5f9;
+    --color-background-3: #f5f5f5;
+    --color-text-1: #868889;
+    --color-text-2: #000000;
+    --color-text-3: #1a0dab;
+    --color-border: #ebebeb;
+    --color-primary: #aedc81;
+    --color-primary-dark: #6cc51d;
+    --color-primary-light: #ebffd7;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-background-2);
+    color: var(--color-text-2);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--color-background-1);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 8px rgba(108,197,29,0.08);
+    top: 0;
+    z-index: 200;
+}
+
+.navbar-title {
+    font-family: var(--font-primary);
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #aedc81, #6cc51d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    background-color: white;
+}
+
+.navbar-links button {
+    background: linear-gradient(90deg, #aedc81, #6cc51d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    border: none;
+    color: transparent;
+    font-size: 1.4rem;
+    font-weight: 540;
+    margin-left: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.navbar-links button:hover {
+    background: #aedc81;
+    color: white;
+    -webkit-background-clip: none;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.phone-navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 25px;
+}
+
+.section-title {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0 35px 0;
+}
+.section-title_text {
+    font-size: 25px;
+    font-weight: medium;
+}
+.section-title_icon {
+    position: absolute;
+    left: 25px;
+}
+
+.section-main {
+    height: auto;
+    background-color: var(--color-background-1);
+    margin: 1rem;
+    width: fit-content;
+    border-radius: 2%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-main_container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    padding-top: 32px;
+}
+.section-main_container-item {
+    display: flex;
+    background-color: var(--color-background-1);
+    padding: 20px 40px;
+}
+
+
+/* Nuevo Para Index.html*/
+
+section h2 {
+    font-family: var(--font-primary);
+    font-size: 2.4rem;
+    padding: 2rem 0 0 3rem;
+    margin:  0 0 0 0;
+    
+}
+
+
+.footer-sticky {
+    margin-top: auto;;
+    width: 100%;
+    background: var(--color-primary-dark)  ;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    z-index: 100;
+}
+
+.footer-sticky a {
+    color: #fff;
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+.footer-sticky a:hover {
+    text-decoration: underline;
+}
+
+.button-gradient {
+    background: linear-gradient(90deg, #aedc81, #6cc51d);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 24px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    height: 4rem;
+    width: 15rem;
+    transition: opacity 0.2s;
+
+}
+
+.button-gradient:hover {
+    opacity: 0.85;
+}
+
+.div-row {
+    display: flex;
+    align-items: flex-start; /* vertically center */
+    justify-content: center;
+    gap: 2rem; /* optional: space between items */
+    padding: 1rem;
+}
+
+.div-row > div {
+    max-width: 600px;
+    flex: 1;
+}
+.div-row h3{
+    color: var(--color-text-1);   
+    font-size: 2rem;
+    font-weight: 400;
+}
+.div-row img {
+    max-width: 300px; /* adjust as needed */
+    height: auto;
+    margin-left: 1rem;
+    border-radius: 4%;
+}
+
+.div-row-text{
+    margin: 1em 0 0 2em;
+    text-align: justify;
+    
+}
