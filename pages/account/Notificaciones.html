@@ -1,0 +1,217 @@
+<div class="notifications-container">
+  <header class="notifications-header">
+    <button class="back-button">←</button>
+    <h1>Notificaciones</h1>
+  </header>
+  
+  <main class="notifications-content">
+    <div class="notification-card active">
+      <div class="notification-info">
+        <h3>Permitir notificaciones</h3>
+        <p>Recibirás notificaciones sobre nuestra aplicación así como ofertas y descuentos</p>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+    
+    <div class="notification-card">
+      <div class="notification-info">
+        <h3>Notificaciones de correo</h3>
+        <p>Recibirás nuestras promociones y ofertas a tu dirección de correo electrónico</p>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox">
+        <span class="slider"></span>
+      </label>
+    </div>
+    
+    <div class="notification-card">
+      <div class="notification-info">
+        <h3>Notificaciones de pedidos</h3>
+        <p>Recibirás en tiempo real información sobre tu pedido</p>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox">
+        <span class="slider"></span>
+      </label>
+    </div>
+    
+    <div class="notification-card active">
+      <div class="notification-info">
+        <h3>Notificaciones en general</h3>
+        <p>Recibirás todo tipo de mensajes de nuestra aplicación</p>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+    
+    <button class="save-button">Guardar cambios</button>
+  </main>
+</div>
+
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .notifications-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #F4F5F9;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  
+  .notifications-header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: white;
+    border-bottom: 1px solid #eee;
+    position: relative;
+  }
+  
+  .back-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 15px;
+  }
+  
+  .notifications-header h1 {
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+    text-align: center;
+    flex: 1;
+    margin: 0;
+  }
+  
+  .notifications-content {
+    padding: 25px;
+  }
+  
+  .notification-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+  }
+  
+  .notification-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .notification-card.active {
+    border: 1px solid #6CC51D;
+  }
+  
+  .notification-info {
+    flex: 1;
+    padding-right: 15px;
+  }
+  
+  .notification-info h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 5px;
+  }
+  
+  .notification-info p {
+    font-size: 10px;
+    color: #868889;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+  }
+  
+  .toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    border: 1.5px solid #868889;
+    transition: .4s;
+    border-radius: 34px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    border: 1.5px solid #868889;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #6CC51D;
+    border-color: #6CC51D;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+    border-color: #6CC51D;
+  }
+  
+  .save-button {
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(141deg, #AEDC81 1%, #6CC51D 100%);
+    box-shadow: 0px 10px 9px rgba(108, 197, 29, 0.25);
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .save-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 12px 12px rgba(108, 197, 29, 0.3);
+  }
+  
+  @media (max-width: 768px) {
+    .notifications-container {
+      margin: 0;
+      border-radius: 0;
+      min-height: 100vh;
+    }
+  }
+</style>
