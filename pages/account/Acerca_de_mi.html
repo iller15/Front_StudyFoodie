@@ -1,0 +1,154 @@
+<div class="profile-container">
+  <div class="profile-header">
+    <div class="header-content">
+      <div class="back-button">←</div>
+      <h1>Acerca de mi</h1>
+    </div>
+  </div>
+  
+  <div class="profile-content">
+    <section class="section">
+      <h2>Personal Details</h2>
+      
+      <div class="input-field">
+        <div class="icon">👤</div>
+        <input type="text" placeholder="Sofia Silva" value="Sofia Silva">
+      </div>
+      
+      <div class="input-field">
+        <div class="icon">✉️</div>
+        <input type="email" placeholder="Email" value="sofi.silva20@gmail.com">
+      </div>
+      
+      <div class="input-field">
+        <div class="icon">📱</div>
+        <input type="tel" placeholder="Teléfono" value="+51 202 555 0142">
+      </div>
+    </section>
+    
+    <section class="section">
+      <h2>Change Password</h2>
+      
+      <div class="input-field">
+        <div class="icon">🔒</div>
+        <input type="password" placeholder="Contraseña actual">
+      </div>
+      
+      <div class="input-field">
+        <div class="icon">🔒</div>
+        <input type="password" placeholder="Nueva contraseña">
+      </div>
+      
+      <div class="input-field">
+        <div class="icon">🔒</div>
+        <input type="password" placeholder="Confirmar contraseña">
+      </div>
+    </section>
+    
+    <button class="save-button">Guardar cambios</button>
+  </div>
+</div>
+
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .profile-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #F4F5F9;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  
+  .profile-header {
+    background: white;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .back-button {
+    position: absolute;
+    left: 0;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .profile-content {
+    padding: 25px;
+  }
+  
+  .section {
+    margin-bottom: 30px;
+  }
+  
+  .section h2 {
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+  
+  .input-field {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .input-field .icon {
+    margin-right: 15px;
+    color: #868889;
+  }
+  
+  .input-field input {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 15px;
+    color: #868889;
+    font-weight: 500;
+  }
+  
+  .save-button {
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(141deg, #AEDC81 1%, #6CC51D 100%);
+    box-shadow: 0px 10px 9px rgba(108, 197, 29, 0.25);
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .save-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 12px 12px rgba(108, 197, 29, 0.3);
+  }
+  
+  @media (max-width: 768px) {
+    .profile-container {
+      margin: 0;
+      border-radius: 0;
+      min-height: 100vh;
+    }
+  }
+</style>

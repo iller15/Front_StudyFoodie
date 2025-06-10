@@ -1,0 +1,370 @@
+<div class="orders-container">
+  <header class="orders-header">
+    <button class="back-button">←</button>
+    <h1>Mis pedidos</h1>
+    <button class="menu-button">⋯</button>
+  </header>
+  
+  <main class="orders-content">
+    <div class="order-card">
+      <div class="order-icon">
+        <div class="icon-bg">
+          <div class="icon-shape"></div>
+        </div>
+      </div>
+      <div class="order-info">
+        <h3>Order #90897</h3>
+        <p class="order-date">Pedido en Diciembre 19 2024</p>
+        <div class="order-details">
+          <span>Items: <strong>10</strong></span>
+          <span>Total: <strong>$16.90</strong></span>
+        </div>
+      </div>
+      <div class="order-status">✓</div>
+      
+      <div class="order-timeline">
+        <div class="timeline-item completed">
+          <div class="timeline-dot"></div>
+          <div class="timeline-info">
+            <span>Pedido recibido</span>
+            <span class="timeline-date">Dic 19 2024</span>
+          </div>
+        </div>
+        <div class="timeline-item completed">
+          <div class="timeline-dot"></div>
+          <div class="timeline-info">
+            <span>Orden confirmada</span>
+            <span class="timeline-date">Dic 19 2024</span>
+          </div>
+        </div>
+        <div class="timeline-item completed">
+          <div class="timeline-dot"></div>
+          <div class="timeline-info">
+            <span>Orden enviada</span>
+            <span class="timeline-date">Dic 19 2024</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-info">
+            <span>Pedido en camino</span>
+            <span class="timeline-date">pendiente</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-info">
+            <span>Pedido recibido</span>
+            <span class="timeline-date">pendiente</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="order-card">
+      <div class="order-icon">
+        <div class="icon-bg">
+          <div class="icon-shape"></div>
+        </div>
+      </div>
+      <div class="order-info">
+        <h3>Order #90897</h3>
+        <p class="order-date">Pedido en Diciembre 16 2024</p>
+        <div class="order-details">
+          <span>Items: <strong>10</strong></span>
+          <span>Total: <strong>$16.90</strong></span>
+        </div>
+      </div>
+      <div class="order-status">✓</div>
+    </div>
+    
+    <div class="order-card">
+      <div class="order-icon">
+        <div class="icon-bg">
+          <div class="icon-shape"></div>
+        </div>
+      </div>
+      <div class="order-info">
+        <h3>Order #90897</h3>
+        <p class="order-date">Pedido en Diciembre 15 2024</p>
+        <div class="order-details">
+          <span>Items: <strong>10</strong></span>
+          <span>Total: <strong>$16.90</strong></span>
+        </div>
+      </div>
+      <div class="order-status">✓</div>
+      
+      <div class="order-timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-info">
+            <span>Pedido recibido</span>
+            <span class="timeline-date">Dic 15 2024</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="order-card">
+      <div class="order-icon">
+        <div class="icon-bg">
+          <div class="icon-shape"></div>
+        </div>
+      </div>
+      <div class="order-info">
+        <h3>Order #90897</h3>
+        <p class="order-date">Pedido en Diciembre 10 2024</p>
+        <div class="order-details">
+          <span>Items: <strong>10</strong></span>
+          <span>Total: <strong>$16.90</strong></span>
+        </div>
+      </div>
+      <div class="order-status">✓</div>
+      
+      <div class="order-timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-info">
+            <span>Pedido recibido</span>
+            <span class="timeline-date">Dic 10 2024</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .orders-container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #F4F5F9;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  
+  .orders-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: white;
+    border-bottom: 1px solid #eee;
+    position: relative;
+  }
+  
+  .back-button, .menu-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .menu-button {
+    font-size: 30px;
+    line-height: 0;
+    padding-bottom: 10px;
+  }
+  
+  .orders-header h1 {
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .orders-content {
+    padding: 20px;
+  }
+  
+  .order-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .order-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .order-header {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .order-icon {
+    margin-right: 20px;
+  }
+  
+  .icon-bg {
+    width: 66px;
+    height: 66px;
+    background: #EBFFD7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .icon-shape {
+    width: 42px;
+    height: 29px;
+    background: #28B446;
+  }
+  
+  .order-info {
+    flex: 1;
+  }
+  
+  .order-info h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 5px;
+  }
+  
+  .order-date {
+    font-size: 10px;
+    color: #868889;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  
+  .order-details {
+    display: flex;
+    gap: 20px;
+    font-size: 10px;
+  }
+  
+  .order-details span {
+    color: black;
+    font-weight: 400;
+  }
+  
+  .order-details strong {
+    font-weight: 600;
+  }
+  
+  .order-status {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid #28B446;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #28B446;
+    font-size: 12px;
+  }
+  
+  .order-timeline {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #EBEBEB;
+  }
+  
+  .timeline-item {
+    display: flex;
+    margin-bottom: 15px;
+    position: relative;
+  }
+  
+  .timeline-item:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 15px;
+    bottom: -15px;
+    width: 2px;
+    background: #28B446;
+  }
+  
+  .timeline-item.completed:not(:last-child)::before {
+    background: #28B446;
+  }
+  
+  .timeline-item:not(.completed):not(:last-child)::before {
+    background: #F4F5F9;
+  }
+  
+  .timeline-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #EBEBEB;
+    margin-right: 10px;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+  
+  .timeline-item.completed .timeline-dot {
+    background: #6CC51D;
+  }
+  
+  .timeline-info {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+  }
+  
+  .timeline-info span {
+    font-size: 12px;
+    font-weight: 600;
+  }
+  
+  .timeline-item.completed .timeline-info span {
+    color: black;
+  }
+  
+  .timeline-item:not(.completed) .timeline-info span {
+    color: #868889;
+  }
+  
+  .timeline-date {
+    font-weight: 400;
+  }
+  
+  @media (max-width: 768px) {
+    .orders-container {
+      margin: 0;
+      border-radius: 0;
+      min-height: 100vh;
+    }
+    
+    .order-card {
+      padding: 15px;
+    }
+    
+    .icon-bg {
+      width: 50px;
+      height: 50px;
+    }
+    
+    .icon-shape {
+      width: 30px;
+      height: 20px;
+    }
+  }
+</style>

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Tarjetas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6CC51D;
+            --primary-light: #AEDC81;
+            --primary-gradient: linear-gradient(141deg, #AEDC81 1%, #6CC51D 100%);
+            --background: #F4F5F9;
+            --text-dark: #000000;
+            --text-light: #868889;
+            --white: #FFFFFF;
+            --green-bg: #EBFFD7;
+            --shadow: 0px 10px 9px rgba(108, 197, 29, 0.25);
+            --red: #F14336;
+            --yellow: #FFC107;
+            --blue: #2394BC;
+            --gold: #EFC75E;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            display: flex;
+            justify-content: center;
+            padding: 40px 0;
+            min-height: 100vh;
+        }
+        
+        .cards-container {
+            width: 800px;
+            background-color: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #EBEBEB;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--text-dark);
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .back-button, .add-button {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+        
+        .add-button {
+            font-size: 28px;
+            line-height: 0;
+        }
+        
+        .content {
+            padding: 24px;
+        }
+        
+        .default-tag {
+            display: inline-block;
+            background-color: var(--green-bg);
+            color: var(--primary-color);
+            font-size: 10px;
+            font-weight: 500;
+            padding: 4px 12px;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            border-radius: 12px;
+            text-transform: uppercase;
+        }
+        
+        .card {
+            display: flex;
+            background: var(--white);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .card.active {
+            border-color: var(--primary-color);
+            box-shadow: 0 5px 15px rgba(108, 197, 29, 0.15);
+        }
+        
+        .card:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-icon {
+            width: 66px;
+            height: 66px;
+            background-color: #F5F5F5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+            position: relative;
+        }
+        
+        /* MasterCard logo */
+        .mastercard-logo {
+            position: relative;
+            width: 40px;
+            height: 24px;
+        }
+        
+        .mastercard-circle-red {
+            width: 24px;
+            height: 24px;
+            background-color: var(--red);
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            opacity: 0.8;
+        }
+        
+        .mastercard-circle-yellow {
+            width: 24px;
+            height: 24px;
+            background-color: var(--yellow);
+            border-radius: 50%;
+            position: absolute;
+            left: 12px;
+        }
+        
+        .mastercard-circle-red-light {
+            width: 24px;
+            height: 24px;
+            background-color: var(--red);
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            opacity: 0.5;
+        }
+        
+        /* Visa logo */
+        .visa-logo {
+            position: relative;
+            width: 40px;
+            height: 24px;
+        }
+        
+        .visa-blue {
+            width: 38px;
+            height: 13px;
+            background-color: var(--blue);
+            position: absolute;
+            top: 5px;
+        }
+        
+        .visa-gold {
+            width: 8px;
+            height: 7px;
+            background-color: var(--gold);
+            position: absolute;
+            top: 5px;
+            left: -3px;
+        }
+        
+        .card-info {
+            flex: 1;
+        }
+        
+        .card-info h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+        
+        .card-number {
+            font-size: 12px;
+            color: var(--text-light);
+            font-weight: 500;
+            margin-bottom: 6px;
+            letter-spacing: 0.36px;
+        }
+        
+        .card-detail {
+            font-size: 10px;
+            color: var(--text-dark);
+            margin-bottom: 2px;
+        }
+        
+        .card-detail span:first-child {
+            font-weight: 400;
+        }
+        
+        .card-detail span:last-child {
+            font-weight: 600;
+        }
+        
+        .card-check {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 20px;
+            flex-shrink: 0;
+            font-size: 12px;
+        }
+        
+        .card-check.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .divider {
+            height: 1px;
+            background-color: #EBEBEB;
+            margin: 16px 0;
+        }
+        
+        .form-group {
+            margin-bottom: 16px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            color: var(--text-light);
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            background-color: var(--background);
+            border: none;
+            border-radius: 8px;
+            font-size: 13px;
+            color: var(--text-light);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .form-checkbox {
+            display: flex;
+            align-items: center;
+            margin: 24px 0;
+        }
+        
+        .form-checkbox input {
+            width: 30px;
+            height: 16px;
+            appearance: none;
+            background: var(--white);
+            border-radius: 100px;
+            border: 1.5px solid var(--text-light);
+            position: relative;
+            transition: all 0.3s;
+            margin-right: 10px;
+        }
+        
+        .form-checkbox input:checked {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .form-checkbox input:checked::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: var(--white);
+            border-radius: 50%;
+            border: 1.5px solid var(--primary-color);
+            right: 2px;
+            top: -1px;
+        }
+        
+        .form-checkbox input:not(:checked)::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: var(--white);
+            border-radius: 50%;
+            border: 1.5px solid var(--text-light);
+            left: -1px;
+            top: -1px;
+        }
+        
+        .form-checkbox label {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 0;
+        }
+        
+        .save-button {
+            width: 100%;
+            height: 60px;
+            background: var(--primary-gradient);
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            border: none;
+            color: var(--white);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .save-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0px 12px 12px rgba(108, 197, 29, 0.3);
+        }
+        
+        @media (max-width: 900px) {
+            .cards-container {
+                width: 95%;
+                max-width: 500px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cards-container">
+        <header class="header">
+            <button class="back-button">←</button>
+            <h1>Mis tarjetas</h1>
+            <button class="add-button">+</button>
+        </header>
+        
+        <main class="content">
+            <div class="default-tag">Default</div>
+            
+            <div class="card active">
+                <div class="card-icon">
+                    <div class="mastercard-logo">
+                        <div class="mastercard-circle-red"></div>
+                        <div class="mastercard-circle-yellow"></div>
+                        <div class="mastercard-circle-red-light"></div>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <h3>Master Card</h3>
+                    <p class="card-number">XXXX  XXXX  XXXX  5678</p>
+                    <p class="card-detail">
+                        <span>Expiry: </span>
+                        <span>01/22</span>
+                    </p>
+                    <p class="card-detail">
+                        <span>CVV: </span>
+                        <span>908</span>
+                    </p>
+                </div>
+                <div class="card-check active">✓</div>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="form-group">
+                <label>Nombre en la tarjeta</label>
+                <input type="text" placeholder="Sofia Silva">
+            </div>
+            
+            <div class="form-group">
+                <label>Número de tarjeta</label>
+                <input type="text" placeholder="XXXX  XXXX  XXXX  5678">
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Fecha de expiración</label>
+                    <input type="text" placeholder="01/22">
+                </div>
+                
+                <div class="form-group">
+                    <label>CVV</label>
+                    <input type="text" placeholder="908">
+                </div>
+            </div>
+            
+            <div class="form-checkbox">
+                <input type="checkbox" id="default-card" checked>
+                <label for="default-card">Hacer predeterminada</label>
+            </div>
+            
+            <button class="save-button">Guardar cambios</button>
+            
+            <div class="card">
+                <div class="card-icon">
+                    <div class="visa-logo">
+                        <div class="visa-gold"></div>
+                        <div class="visa-blue"></div>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <h3>Visa Card</h3>
+                    <p class="card-number">XXXX  XXXX  XXXX  5678</p>
+                    <p class="card-detail">
+                        <span>Expiry: </span>
+                        <span>01/22</span>
+                    </p>
+                    <p class="card-detail">
+                        <span>CVV: </span>
+                        <span>908</span>
+                    </p>
+                </div>
+                <div class="card-check">○</div>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">
+                    <div class="mastercard-logo">
+                        <div class="mastercard-circle-red"></div>
+                        <div class="mastercard-circle-yellow"></div>
+                        <div class="mastercard-circle-red-light"></div>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <h3>Master Card</h3>
+                    <p class="card-number">XXXX  XXXX  XXXX  5678</p>
+                    <p class="card-detail">
+                        <span>Expiry: </span>
+                        <span>01/22</span>
+                    </p>
+                    <p class="card-detail">
+                        <span>CVV: </span>
+                        <span>908</span>
+                    </p>
+                </div>
+                <div class="card-check">○</div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
