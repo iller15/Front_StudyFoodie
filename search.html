@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transactions</title>
+</head>
+<body>
+  <style>
+    :root {
+      --font-primary: 'Poppins', sans-serif;
+      --color-background-1: #ffffff;
+      --color-background-2: #f4f5f9;
+      --color-background-3: #f5f5f5;
+      --color-text-1: #868889;
+      --color-text-2: #000000;
+      --color-text-3: #1a0dab;
+      --color-border: #ebebeb;
+      --color-primary: #aedc81;
+      --color-primary-dark: #6cc51d;
+      --color-primary-light: #ebffd7;
+    }
+
+    body {
+      font-family: var(--font-primary);
+      background-color: var(--color-background-1);
+      color: var(--color-text-2);
+      margin: 0;
+      padding: 0;
+    }
+
+    p {
+      margin: 0;
+      padding: 0;
+    }
+    input[type="text"] {
+      width: 100%;
+      height: 40px;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      color: var(--color-text-2);
+      font-size: 16px;
+    }
+
+    .phone-navbar {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 25px;
+    }
+
+    .section-title {
+      display: flex;
+      position: relative;
+      align-items: center;;
+      padding: 0px 0 25px 0;
+      width: 100%;
+    }
+    .section-title_icon {
+      padding: 15px 15px;
+      height: 30px;
+      width: 30px;
+    }
+    .section-title_input-search_container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 500px;
+      padding: 0 25px;
+      background-color: var(--color-background-2);
+      height: 60px;
+      border-radius: 10px;
+    }
+    .section-title_input-search_input {
+      padding-left: 15px;
+    }
+    .section-title_input-search_container svg {
+      width: 25px;
+      height: 25px;
+    }
+
+    .section-main {
+      height: 100vh;
+      background-color: var(--color-background-2);
+    }
+
+    .section-main_container {
+      display: flex;
+      flex-direction: column;
+      gap: 35px;
+      width: 100%;
+      padding-top: 32px;
+    }
+
+    .section-tag {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 0 25px;
+    }
+    .section-tag_title {
+      font-size: 25px;
+      font-weight: bold;
+      color: var(--color-text-2);
+    }
+    .section-tag_container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .section-tag_container-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 10px 15px;
+      background-color: var(--color-background-1);
+      border-radius: 5px;
+      border: 1px solid var(--color-border);
+      color: var(--color-text-1);
+      font-size: 14px;
+    }
+  </style>
+  
+  <div class="phone-navbar">
+    <div class="phone-navbar_hour">
+      <p class="phone-navbar_hour-text">9:41</p>
+    </div>
+    <div class="phone-navbar_icons">
+      <svg width="19" height="11" viewBox="0 0 19 11" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M17.7168 0.335938H16.665C16.0841 0.335938 15.6133 0.783653 15.6133 1.33594V10.0026C15.6133 10.5549 16.0841 11.0026 16.665 11.0026H17.7168C18.2976 11.0026 18.7685 10.5549 18.7685 10.0026V1.33594C18.7685 0.783653 18.2976 0.335938 17.7168 0.335938ZM11.7568 2.66927H12.8086C13.3894 2.66927 13.8603 3.11699 13.8603 3.66927V10.0026C13.8603 10.5549 13.3894 11.0026 12.8086 11.0026H11.7568C11.1759 11.0026 10.7051 10.5549 10.7051 10.0026V3.66927C10.7051 3.11699 11.1759 2.66927 11.7568 2.66927ZM7.90038 5.0026H6.84862C6.26775 5.0026 5.79687 5.45032 5.79687 6.0026V10.0026C5.79687 10.5549 6.26775 11.0026 6.84862 11.0026H7.90038C8.48125 11.0026 8.95213 10.5549 8.95213 10.0026V6.0026C8.95213 5.45032 8.48125 5.0026 7.90038 5.0026ZM2.99218 7.0026H1.94043C1.35956 7.0026 0.888672 7.45032 0.888672 8.0026V10.0026C0.888672 10.5549 1.35956 11.0026 1.94043 11.0026H2.99218C3.57305 11.0026 4.04394 10.5549 4.04394 10.0026V8.0026C4.04394 7.45032 3.57305 7.0026 2.99218 7.0026Z" fill="black"/>
+      </svg>
+      <svg width="17" height="11" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.08751 2.27733C10.4181 2.27742 12.6595 3.12886 14.3486 4.65566C14.4758 4.77354 14.6791 4.77205 14.8044 4.65233L16.0202 3.48566C16.0836 3.42494 16.119 3.34269 16.1185 3.25711C16.1179 3.17153 16.0816 3.08967 16.0174 3.02966C11.5841 -1.00989 4.59017 -1.00989 0.156919 3.02966C0.0927005 3.08963 0.0562636 3.17146 0.0556714 3.25704C0.0550792 3.34262 0.0903806 3.42489 0.153764 3.48566L1.36994 4.65233C1.49513 4.77223 1.69859 4.77372 1.8257 4.65566C3.51498 3.12876 5.7567 2.27732 8.08751 2.27733ZM8.08751 6.07299C9.36801 6.07292 10.6028 6.52545 11.552 7.34266C11.6804 7.45864 11.8826 7.45613 12.0077 7.33699L13.2222 6.17033C13.2861 6.10913 13.3216 6.02612 13.3207 5.93985C13.3198 5.85359 13.2825 5.77127 13.2173 5.71133C10.3268 3.15494 5.85063 3.15494 2.9602 5.71133C2.89491 5.77127 2.85766 5.85363 2.8568 5.93992C2.85594 6.02621 2.89155 6.10922 2.95564 6.17033L4.16972 7.33699C4.29486 7.45613 4.4971 7.45864 4.62548 7.34266C5.57403 6.52599 6.80785 6.0735 8.08751 6.07299ZM10.5202 8.62681C10.5221 8.71332 10.4863 8.79672 10.4214 8.85733L8.32065 10.873C8.25906 10.9322 8.17511 10.9656 8.08751 10.9656C7.9999 10.9656 7.91595 10.9322 7.85437 10.873L5.75331 8.85733C5.6884 8.79668 5.6527 8.71325 5.65462 8.62674C5.65655 8.54023 5.69593 8.45831 5.76348 8.40033C7.10507 7.32144 9.06995 7.32144 10.4115 8.40033C10.479 8.45836 10.5184 8.54031 10.5202 8.62681Z" fill="black"/>
+      </svg>
+      <svg width="26" height="12" viewBox="0 0 26 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon">
+        <path opacity="0.35" d="M3.07983 0.50293H20.8845C22.0811 0.50293 23.0515 1.4733 23.0515 2.66992V8.66992C23.0513 9.86639 22.081 10.8359 20.8845 10.8359H3.07983C1.88333 10.8359 0.913018 9.86639 0.912842 8.66992V2.66992L0.923584 2.44824C1.03444 1.35558 1.95793 0.50293 3.07983 0.50293Z" stroke="black"/>
+        <path opacity="0.4" d="M24.6033 3.66943V7.66943C25.4496 7.33066 26 6.54257 26 5.66943C26 4.7963 25.4496 4.00821 24.6033 3.66943Z" fill="black"/>
+        <path d="M2.51636 3.10293C2.51636 2.49542 3.00884 2.00293 3.61636 2.00293H20.348C20.9555 2.00293 21.448 2.49542 21.448 3.10293V8.23626C21.448 8.84378 20.9555 9.33626 20.348 9.33626H3.61636C3.00884 9.33626 2.51636 8.84378 2.51636 8.23626V3.10293Z" fill="black"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="section-title_icon">
+      <path d="M0.385274 7.08664L0.386459 7.08542L7.24993 0.375737C7.76411 -0.126909 8.59577 -0.125038 9.10759 0.380123C9.61934 0.885221 9.61737 1.70219 9.10319 2.2049L4.49505 6.70968L21.6865 6.70968C22.4119 6.70968 23 7.28736 23 8C23 8.71265 22.4119 9.29032 21.6865 9.29032L4.49512 9.29032L9.10312 13.7951C9.6173 14.2978 9.61927 15.1148 9.10752 15.6199C8.5957 16.1251 7.76397 16.1268 7.24986 15.6243L0.386392 8.91458L0.385209 8.91335C-0.129235 8.40897 -0.127595 7.58935 0.385274 7.08664Z" fill="black"/>
+      <path d="M0.385274 7.08664L0.386459 7.08542L7.24993 0.375737C7.76411 -0.126909 8.59577 -0.125038 9.10759 0.380123C9.61934 0.885221 9.61737 1.70219 9.10319 2.2049L4.49505 6.70968L21.6865 6.70968C22.4119 6.70968 23 7.28736 23 8C23 8.71265 22.4119 9.29032 21.6865 9.29032L4.49512 9.29032L9.10312 13.7951C9.6173 14.2978 9.61927 15.1148 9.10752 15.6199C8.5957 16.1251 7.76397 16.1268 7.24986 15.6243L0.386392 8.91458L0.385209 8.91335C-0.129235 8.40897 -0.127595 7.58935 0.385274 7.08664Z" fill="black"/>
+    </svg>
+    <div class="section-title_input-search_container">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18.5056 17.3283L14.0682 12.8909C15.1699 11.53 15.8332 9.80088 15.8332 7.91758C15.8332 3.55262 12.2815 0.000976562 7.91656 0.000976562C3.55161 0.000976562 0 3.55258 0 7.91754C0 12.2825 3.55164 15.8341 7.9166 15.8341C9.7999 15.8341 11.5291 15.1708 12.8899 14.0692L17.3273 18.5066C17.4898 18.6691 17.7031 18.7508 17.9165 18.7508C18.1298 18.7508 18.3432 18.6691 18.5057 18.5066C18.8315 18.1808 18.8315 17.6541 18.5056 17.3283ZM7.9166 14.1675C4.46996 14.1675 1.66666 11.3642 1.66666 7.91754C1.66666 4.47089 4.46996 1.6676 7.9166 1.6676C11.3632 1.6676 14.1665 4.47089 14.1665 7.91754C14.1665 11.3642 11.3632 14.1675 7.9166 14.1675Z" fill="#868889"/>
+      </svg>
+      <input type="text" name="" id="" class="section-title_input-search_input" placeholder="Buscar">
+      <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18.273 1.83801H7.19927C6.89482 0.938194 6.03955 0.288086 5.03397 0.288086C4.02839 0.288086 3.17312 0.938194 2.86868 1.83801H1.14015C0.738617 1.83801 0.413086 2.16196 0.413086 2.56153C0.413086 2.96111 0.738617 3.28505 1.14015 3.28505H2.86872C3.17317 4.18487 4.02844 4.83498 5.03402 4.83498C6.0396 4.83498 6.89487 4.18487 7.19932 3.28505H18.2731C18.6746 3.28505 19.0001 2.96111 19.0001 2.56153C19.0001 2.16196 18.6746 1.83801 18.273 1.83801ZM5.03397 3.38794C4.57607 3.38794 4.20352 3.01721 4.20352 2.56153C4.20352 2.10586 4.57607 1.73513 5.03397 1.73513C5.49188 1.73513 5.86443 2.10586 5.86443 2.56153C5.86443 3.01721 5.49188 3.38794 5.03397 3.38794Z" fill="#868889"/>
+        <path d="M18.273 8.03772H16.5444C16.24 7.1379 15.3847 6.48779 14.3791 6.48779C13.3736 6.48779 12.5183 7.1379 12.2139 8.03772H1.14015C0.738617 8.03772 0.413086 8.36166 0.413086 8.76124C0.413086 9.16082 0.738617 9.48476 1.14015 9.48476H12.2139C12.5183 10.3846 13.3737 11.0347 14.3792 11.0347C15.3847 11.0347 16.24 10.3846 16.5445 9.48476H18.2731C18.6746 9.48476 19.0001 9.16082 19.0001 8.76124C19.0001 8.36166 18.6746 8.03772 18.273 8.03772ZM14.3792 9.58765C13.9213 9.58765 13.5487 9.21691 13.5487 8.76124C13.5487 8.30557 13.9213 7.93484 14.3792 7.93484C14.8371 7.93484 15.2096 8.30557 15.2096 8.76124C15.2096 9.21691 14.8371 9.58765 14.3792 9.58765Z" fill="#868889"/>
+        <path d="M18.273 14.2374H10.3144C10.0099 13.3376 9.15464 12.6875 8.14906 12.6875C7.14348 12.6875 6.28821 13.3376 5.98376 14.2374H1.14015C0.738617 14.2374 0.413086 14.5614 0.413086 14.9609C0.413086 15.3605 0.738617 15.6845 1.14015 15.6845H5.98376C6.28821 16.5843 7.14348 17.2344 8.14906 17.2344C9.15464 17.2344 10.0099 16.5843 10.3144 15.6845H18.2731C18.6746 15.6845 19.0001 15.3605 19.0001 14.9609C19.0001 14.5614 18.6746 14.2374 18.273 14.2374ZM8.14906 15.7874C7.69115 15.7874 7.3186 15.4167 7.3186 14.961C7.3186 14.5053 7.69115 14.1346 8.14906 14.1346C8.60696 14.1346 8.97951 14.5053 8.97951 14.9609C8.97951 15.4166 8.60696 15.7874 8.14906 15.7874Z" fill="#868889"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="section-main">
+    <div class="section-main_container">
+      <div class="section-tag">
+        <p class="section-tag_title">Buscar en historial</p>
+        <div class="section-tag_container">
+          <div class="section-tag_container-item">
+            <p class="section-tag_container-item_text">Bowls</p>
+          </div>
+          <div class="section-tag_container-item">
+            <p class="section-tag_container-item_text">Snacks</p>
+          </div>
+          <div class="section-tag_container-item">
+            <p class="section-tag_container-item_text">Frutas</p>
+          </div>
+          <div class="section-tag_container-item">
+            <p class="section-tag_container-item_text">Jugos</p>
+          </div>
+          <div class="section-tag_container-item">
+            <p class="section-tag_container-item_text">Batidos</p>
+          </div>
+          <div class="section-tag_container-item">
+            <p class="section-tag_container-item_text">Filete</p>
+          </div>
+        </div>
+      </div>
+      <div class="section-tag">
+        <p class="section-tag_title">Buscar en historial</p>
+        <div class="section-tag_container">
+          <div class="section-tag_container-item">
+            <p class="section-tag_container-item_text">Garbanzos</p>
+          </div>
+          <div class="section-tag_container-item">
+            <p class="section-tag_container-item_text">Platillos</p>
+          </div>
+          <div class="section-tag_container-item">
+            <p class="section-tag_container-item_text">Tacos</p>
+          </div>
+          <div class="section-tag_container-item">
+            <p class="section-tag_container-item_text">Omelette</p>
+          </div>
+          <div class="section-tag_container-item">
+            <p class="section-tag_container-item_text">Frutas</p>
+          </div>
+          <div class="section-tag_container-item">
+            <p class="section-tag_container-item_text">Frutos rojos</p>
+          </div>
+          <div class="section-tag_container-item">
+            <p class="section-tag_container-item_text">Pescado</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html> 
