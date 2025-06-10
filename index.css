@@ -27,10 +27,9 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--color-background-2);
+    background: var(--color-background-1);
     padding: 1rem 2rem;
     box-shadow: 0 2px 8px rgba(108,197,29,0.08);
-    
     top: 0;
     z-index: 200;
 }
@@ -105,6 +104,10 @@ p {
     height: auto;
     background-color: var(--color-background-1);
     margin: 1rem;
+    width: fit-content;
+    border-radius: 2%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .section-main_container {
@@ -124,11 +127,14 @@ p {
 /* Nuevo Para Index.html*/
 
 section h2 {
+    font-family: var(--font-primary);
     font-size: 2.4rem;
     padding: 2rem 0 0 3rem;
     margin:  0 0 0 0;
     
 }
+
+
 .footer-sticky {
     margin-top: auto;;
     width: 100%;
@@ -169,7 +175,7 @@ section h2 {
 
 .div-row {
     display: flex;
-    align-items: center; /* vertically center */
+    align-items: flex-start; /* vertically center */
     justify-content: center;
     gap: 2rem; /* optional: space between items */
     padding: 1rem;
@@ -189,4 +195,10 @@ section h2 {
     height: auto;
     margin-left: 1rem;
     border-radius: 4%;
+}
+
+.div-row-text{
+    margin: 1em 0 0 2em;
+    text-align: justify;
+    
 }
