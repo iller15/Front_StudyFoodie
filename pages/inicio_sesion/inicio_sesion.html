@@ -10,20 +10,23 @@
     <div class="login-container">
         <div class="login-header">
             <div class="icon-bar"><img src="../../media/left_arrow_icon.png" alt="flecha izquierda para regresar a pestaña anterior"></div>
-            <span class="welcome-text">Welcome</span>
+            <span class="welcome-text">Bienvenido</span>
             <div class="main-img"><img src="../../media/compras_saludables.png" alt=""></div>
         </div>
-        <form class="login-form">
+        <form class="login-form" onsubmit="return validateForm()" onreset="resetErrors()">
             <h1>¡Bienvenido devuelta!</h1>
             <div class="subtitle">Ingresa a tu cuenta</div>
             <div class="input-group">
-                <div class="input-icon"><img src="../../media/email_icon.png" alt=""></div>
+                <div class="input-icon" id="mail" name="mail"><img src="../../media/email_icon.png" alt=""></div>
                 <input type="email" placeholder="Correo electronico" required>
             </div>
+            <span id="mail-error" class="error-message"></span>
+
             <div class="input-group">
-                <input type="password" placeholder="********" required>
+                <input type="password" id="password" name="password" placeholder="********" required>
                 <div class="input-eye"><img src="../../media/eye_icon.png" alt="Imagen de un ojo para mostrar contraseña"></div>
             </div>
+            <span id="password-error" class="error-message"></span>
             <div class="options-row">
                 <label class="remember-me">
                     <input type="checkbox" class="remember-checkbox">
@@ -38,11 +41,11 @@
             </div>
         </form>
     </div>
-    </body>
+    
 
 
     <footer class="footer-sticky">
-        <p>© 2024 Study Foodie. Todos los derechos reservados.</p>
+        <p>©2025 Study Foodie. Todos los derechos reservados.</p>
         <p>Contacto:<a href="mailto:U2018A010@upc.edu.pe">U2018A010@upc.edu.pe</a></p>  
         <a href="https://github.com/iller15/Front_StudyFoodie">Redes: Github 
         <svg height="20" width="20" viewBox="0 0 16 16" fill="currentColor" style="vertical-align:middle;">
@@ -56,4 +59,61 @@
             </svg>
     </footer>
 
+    <script>
+        function validateForm(){
+
+            const mail = document.getElementById("mail").value;
+            const mailErr = document.getElementById("mail-error");
+
+
+            const pass = document.getElementById("password").value;
+            const passErr = document.getElementById("password-error");
+
+            passErr.textContent = "";
+            mailErr.textContent = "";
+
+
+            let isValid = true;
+            if (pass === "" || pass.length < 8) {
+                passErr.textContent = "La contraseña debe tener al menos 8 caracteres.";
+                isValid = false;
+            } 
+            else if ( pass === "" || !/[A-Z]/.test(pass)) {
+                passErr.textContent = "La contraseña debe contener al menos una letra mayúscula.";
+                isValid = false;
+            } 
+            else if ( pass === "" || !/[a-z]/.test(pass)) {
+                passErr.textContent = "La contraseña debe contener al menos una letra minúscula.";
+                isValid = false;
+            } 
+            else if ( pass === "" || !/\d/.test(pass)) {
+                passErr.textContent = "La contraseña debe contener al menos un número.";
+                isValid = false;
+            } 
+            else if ( pass === "" || !/[!@#$%^&*(),.?":{}|<>]/.test(pass)) {
+                passErr.textContent = "La contraseña debe contener al menos un carácter especial.";
+                isValid = false;
+            }
+/*
+            if (mail ==="" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
+                mailErr.textContent = "Por favor, ingresa un correo electrónico válido.";
+                isValid = false;
+            }*/
+
+            if (isValid) {
+                alert("Form submitted successfully!");
+                window.location.href = "../cart_empty/cart_empty.html";
+                return false;
+            } else {
+                return false; 
+            }
+
+        }
+
+        function resetErrors(){
+            document.getElementById("password-error").textContent = "";
+        }
+
+    </script>
+    </body>
 </html>

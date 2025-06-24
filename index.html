@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="index.css">
-<head>
+  <head>
+  <link rel="stylesheet" href="index.css">
   <meta charset="UTF-8">
+  <LINK></LINK>
   <title>Study Foodie</title>
 </head>
 <body>
@@ -12,6 +13,12 @@
       <button onclick="document.getElementById('Propósito').scrollIntoView({behavior:'smooth'})">Propósito</button>
       <button onclick="document.getElementById('Pitch').scrollIntoView({behavior:'smooth'})">Pitch</button>
       <button onclick="document.querySelector('footer').scrollIntoView({behavior:'smooth'})">Contacto</button>
+      <button>Ir al home</button>
+      <script>
+        document.querySelectorAll('.navbar-links button')[3].onclick = function() {
+          window.location.href = '/pages/home/Home_main.html';
+        };
+      </script>
     </div>
   </nav>
 

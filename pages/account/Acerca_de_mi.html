@@ -1,7 +1,20 @@
-<div class="profile-container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="profile-container">
   <div class="profile-header">
     <div class="header-content">
-      <div class="back-button">←</div>
+      <div class="back-button" id="redirect-account">←</div>
+      <script>
+        document.getElementById('redirect-account').onclick = function() {
+          window.location.href = '/pages/account/account.html';
+        };
+      </script>
       <h1>Acerca de mi</h1>
     </div>
   </div>
@@ -152,3 +165,5 @@
     }
   }
 </style>
+</body>
+</html>
