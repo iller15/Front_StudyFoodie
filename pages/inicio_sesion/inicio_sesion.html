@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión</title>
     <link rel="stylesheet" href="inicio_sesion.css">
+    <script src="../../back_temp.js" defer></script>
+    <script src="inicio_sesion.js" defer></script>
+
 </head>
     <body>
     <div class="login-container">
@@ -17,8 +20,8 @@
             <h1>¡Bienvenido devuelta!</h1>
             <div class="subtitle">Ingresa a tu cuenta</div>
             <div class="input-group">
-                <div class="input-icon" id="mail" name="mail"><img src="../../media/email_icon.png" alt=""></div>
-                <input type="email" placeholder="Correo electronico" required>
+                <div class="input-icon"  name="mail"><img src="../../media/email_icon.png" alt=""></div>
+                <input type="email" id="mail" placeholder="Correo electronico" required>
             </div>
             <span id="mail-error" class="error-message"></span>
 
@@ -59,61 +62,6 @@
             </svg>
     </footer>
 
-    <script>
-        function validateForm(){
-
-            const mail = document.getElementById("mail").value;
-            const mailErr = document.getElementById("mail-error");
-
-
-            const pass = document.getElementById("password").value;
-            const passErr = document.getElementById("password-error");
-
-            passErr.textContent = "";
-            mailErr.textContent = "";
-
-
-            let isValid = true;
-            if (pass === "" || pass.length < 8) {
-                passErr.textContent = "La contraseña debe tener al menos 8 caracteres.";
-                isValid = false;
-            } 
-            else if ( pass === "" || !/[A-Z]/.test(pass)) {
-                passErr.textContent = "La contraseña debe contener al menos una letra mayúscula.";
-                isValid = false;
-            } 
-            else if ( pass === "" || !/[a-z]/.test(pass)) {
-                passErr.textContent = "La contraseña debe contener al menos una letra minúscula.";
-                isValid = false;
-            } 
-            else if ( pass === "" || !/\d/.test(pass)) {
-                passErr.textContent = "La contraseña debe contener al menos un número.";
-                isValid = false;
-            } 
-            else if ( pass === "" || !/[!@#$%^&*(),.?":{}|<>]/.test(pass)) {
-                passErr.textContent = "La contraseña debe contener al menos un carácter especial.";
-                isValid = false;
-            }
-/*
-            if (mail ==="" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
-                mailErr.textContent = "Por favor, ingresa un correo electrónico válido.";
-                isValid = false;
-            }*/
-
-            if (isValid) {
-                alert("Form submitted successfully!");
-                window.location.href = "../cart_empty/cart_empty.html";
-                return false;
-            } else {
-                return false; 
-            }
-
-        }
-
-        function resetErrors(){
-            document.getElementById("password-error").textContent = "";
-        }
-
-    </script>
+    
     </body>
 </html>
