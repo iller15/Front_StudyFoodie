@@ -1,6 +1,19 @@
-<div class="orders-container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis pedidos</title>
+</head>
+<body>
+  <div class="orders-container">
   <header class="orders-header">
-    <button class="back-button">←</button>
+    <button class="back-button" id="redirect-account">←</button>
+    <script>
+      document.getElementById('redirect-account').addEventListener('click', function() {
+        window.location.href = '/pages/account/account.html';
+      });
+    </script>
     <h1>Mis pedidos</h1>
     <button class="menu-button">⋯</button>
   </header>
@@ -368,3 +381,5 @@
     }
   }
 </style>
+</body>
+</html>

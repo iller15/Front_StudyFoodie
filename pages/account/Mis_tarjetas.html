@@ -370,7 +370,12 @@
 <body>
     <div class="cards-container">
         <header class="header">
-            <button class="back-button">←</button>
+            <button class="back-button" id="redirect-account">←</button>
+            <script>
+              document.getElementById('redirect-account').onclick = function() {
+                window.location.href = '/pages/account/account.html';
+              };
+            </script>
             <h1>Mis tarjetas</h1>
             <button class="add-button">+</button>
         </header>

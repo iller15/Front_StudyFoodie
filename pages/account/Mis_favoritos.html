@@ -1,99 +1,13 @@
-<div class="favorites-container">
-  <header class="favorites-header">
-    <button class="back-button">←</button>
-    <h1>Favoritos</h1>
-  </header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis favoritos</title>
+</head>
+<body>
   
-  <main class="favorites-content">
-    <div class="favorites-list">
-      <!-- Item 1 -->
-      <div class="favorite-item">
-        <div class="item-image" style="background-color: #FEE1ED;">
-          <img src="https://placehold.co/68x68" alt="Garbanzos con vegetales">
-        </div>
-        <div class="item-info">
-          <h3>Garbanzos con vegetales</h3>
-          <div class="item-price">S/. 14.90 x 5</div>
-          <div class="item-weight">5.0 lbs</div>
-        </div>
-        <div class="item-quantity">
-          <div class="quantity-divider"></div>
-          <span>5</span>
-        </div>
-        <button class="remove-btn">
-          <svg viewBox="0 0 24 24" width="24" height="24">
-            <path fill="white" d="M19 13H5v-2h14v2z"/>
-          </svg>
-        </button>
-      </div>
-      
-      <!-- Item 2 -->
-      <div class="favorite-item">
-        <div class="item-image">
-          <img src="https://placehold.co/69x39" alt="Bowl frutos rojos">
-        </div>
-        <div class="item-info">
-          <h3>Bowl frutos rojos</h3>
-          <div class="item-price">S/ 10 x 2</div>
-          <div class="item-weight">1.50 lbs</div>
-        </div>
-        <div class="item-quantity">
-          <div class="quantity-divider"></div>
-          <span>2</span>
-        </div>
-        <button class="remove-btn">
-          <svg viewBox="0 0 24 24" width="24" height="24">
-            <path fill="white" d="M19 13H5v-2h14v2z"/>
-          </svg>
-        </button>
-      </div>
-      
-      <!-- Item 3 -->
-      <div class="favorite-item">
-        <div class="item-image" style="background-color: #FCFFD9;">
-          <img src="https://placehold.co/74x51" alt="Bowl de quinua">
-        </div>
-        <div class="item-info">
-          <h3>Bowl de quinua</h3>
-          <div class="item-price">S/. 12.00 x 4</div>
-          <div class="item-weight">1.50 lbs</div>
-        </div>
-        <div class="item-quantity">
-          <div class="quantity-divider"></div>
-          <span>4</span>
-        </div>
-        <button class="remove-btn">
-          <svg viewBox="0 0 24 24" width="24" height="24">
-            <path fill="white" d="M19 13H5v-2h14v2z"/>
-          </svg>
-        </button>
-      </div>
-      
-      <!-- Item 4 -->
-      <div class="favorite-item">
-        <div class="item-image" style="background-color: #FFE6C2;">
-          <img src="https://placehold.co/116x56" alt="Filete de pescado">
-        </div>
-        <div class="item-info">
-          <h3>Filete de pescado</h3>
-          <div class="item-price">S/. 19.00 x 3</div>
-          <div class="item-weight">dozen</div>
-        </div>
-        <div class="item-quantity">
-          <div class="quantity-divider"></div>
-          <span>3</span>
-        </div>
-        <button class="remove-btn">
-          <svg viewBox="0 0 24 24" width="24" height="24">
-            <path fill="white" d="M19 13H5v-2h14v2z"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </main>
-</div>
-
-<style>
+  <style>
   * {
     box-sizing: border-box;
     margin: 0;
@@ -257,3 +171,109 @@
     }
   }
 </style>
+
+<div class="favorites-container">
+  <header class="favorites-header">
+    <button class="back-button" id="get_back">←</button>
+    <script>
+      const get_back = document.getElementById('get_back');
+      get_back.addEventListener('click', () => {
+        window.location.href = "/pages/account/account.html";
+      })
+    </script>
+    <h1>Favoritos</h1>
+  </header>
+  
+  <main class="favorites-content">
+    <div class="favorites-list">
+      <!-- Item 1 -->
+      <div class="favorite-item">
+        <div class="item-image" style="background-color: #FEE1ED;">
+          <img src="/media/dish_3.jpeg" alt="Garbanzos con vegetales">
+        </div>
+        <div class="item-info">
+          <h3>Garbanzos con vegetales</h3>
+          <div class="item-price">S/. 14.90 x 5</div>
+          <div class="item-weight">5.0 lbs</div>
+        </div>
+        <div class="item-quantity">
+          <div class="quantity-divider"></div>
+          <span>5</span>
+        </div>
+        <button class="remove-btn">
+          <svg viewBox="0 0 24 24" width="24" height="24">
+            <path fill="white" d="M19 13H5v-2h14v2z"/>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Item 2 -->
+      <div class="favorite-item">
+        <div class="item-image">
+          <img src="/media/dish_2.jpeg" alt="Bowl frutos rojos">
+        </div>
+        <div class="item-info">
+          <h3>Bowl frutos rojos</h3>
+          <div class="item-price">S/ 10 x 2</div>
+          <div class="item-weight">1.50 lbs</div>
+        </div>
+        <div class="item-quantity">
+          <div class="quantity-divider"></div>
+          <span>2</span>
+        </div>
+        <button class="remove-btn">
+          <svg viewBox="0 0 24 24" width="24" height="24">
+            <path fill="white" d="M19 13H5v-2h14v2z"/>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Item 3 -->
+      <div class="favorite-item">
+        <div class="item-image" style="background-color: #FCFFD9;">
+          <img src="/media/dish_5.jpeg" alt="Bowl de quinua">
+        </div>
+        <div class="item-info">
+          <h3>Bowl de quinua</h3>
+          <div class="item-price">S/. 12.00 x 4</div>
+          <div class="item-weight">1.50 lbs</div>
+        </div>
+        <div class="item-quantity">
+          <div class="quantity-divider"></div>
+          <span>4</span>
+        </div>
+        <button class="remove-btn">
+          <svg viewBox="0 0 24 24" width="24" height="24">
+            <path fill="white" d="M19 13H5v-2h14v2z"/>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Item 4 -->
+      <div class="favorite-item">
+        <div class="item-image" style="background-color: #FFE6C2;">
+          <img src="/media/dish_1.jpeg" alt="Filete de pescado">
+        </div>
+        <div class="item-info">
+          <h3>Filete de pescado</h3>
+          <div class="item-price">S/. 19.00 x 3</div>
+          <div class="item-weight">dozen</div>
+        </div>
+        <div class="item-quantity">
+          <div class="quantity-divider"></div>
+          <span>3</span>
+        </div>
+        <button class="remove-btn">
+          <svg viewBox="0 0 24 24" width="24" height="24">
+            <path fill="white" d="M19 13H5v-2h14v2z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+
+</body>
+</html>
