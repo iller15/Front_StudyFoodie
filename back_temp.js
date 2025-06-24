@@ -1,14 +1,14 @@
 class User {
-    constructor(name, email, password) {
-        this.name = name;
-        this.email = email;
+    constructor(tel, mail, password) {
+        this.tel = tel;
+        this.mail = mail;
         this.password = password;
     }
 }
 
 
-const users = [
-    new User('Joaquin', 'joaquin@web.com', 'Hola1234')
+var users = [
+    new User('123546789', 'joaquin@web.com', 'Hola1234')
 ];
 
 function validateUser(){
