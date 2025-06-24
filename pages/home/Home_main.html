@@ -179,6 +179,7 @@
             max-width: 80%;
             max-height: 80%;
             object-fit: contain;
+            border-radius: 20px;
         }
         
         .product-info {
@@ -228,7 +229,6 @@
         .add-to-cart-icon {
             width: 13px;
             height: 15px;
-            background: #6CC51D;
             margin-right: 10px;
         }
         
@@ -326,6 +326,20 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        .add-to-cart {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 5px;
+        }
+        .add-to-cart svg {
+          width: 15px;
+          height: 15px;
+        }
+        p {
+          margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -337,18 +351,19 @@
             </div>
         </div>
         
-        <div class="search-bar">
+        <!-- Barra de búsqueda: redirige a búsqueda -->
+        <div class="search-bar" onclick="window.location.href='../search/search.html'" style="cursor:pointer;">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19.7556 18.5775L14.0683 12.8902C15.2 11.5293 15.8333 9.79975 15.8333 7.91659C15.8333 3.55159 12.2817 0 7.91667 0C3.55167 0 0 3.55159 0 7.91659C0 12.2816 3.55167 15.8332 7.91667 15.8332C9.79983 15.8332 11.5293 15.1999 12.8902 14.0683L18.5775 19.7556C18.7392 19.9172 18.9533 20 19.1666 20C19.38 20 19.5941 19.9172 19.7556 19.7556C20.0814 19.4298 20.0814 18.9033 19.7556 18.5775ZM7.91667 14.1666C4.47083 14.1666 1.66667 11.3624 1.66667 7.91659C1.66667 4.47075 4.47083 1.66659 7.91667 1.66659C11.3625 1.66659 14.1667 4.47075 14.1667 7.91659C14.1667 11.3624 11.3625 14.1666 7.91667 14.1666Z" fill="#868889"/>
             </svg>
-            <input type="text" placeholder="Buscar...">
+            <input type="text" placeholder="Buscar..." readonly style="cursor:pointer;">
             <div class="menu-dots">
                 <!-- Icono de menú de 3 puntos -->
             </div>
         </div>
         
         <div class="hero-banner">
-            <img src="https://placehold.co/1200x300" alt="Promoción">
+            <img src="../../media/carousel_image.jpeg" alt="Promoción">
             <div class="banner-text">20% de descuento en tu primer pedido</div>
         </div>
         
@@ -357,14 +372,14 @@
         <div class="subscriptions">
             <div class="subscription-option">
                 <div class="subscription-image">
-                    <img src="https://placehold.co/600x400" alt="Premium">
+                    <img src="/media/dish_4.jpeg" alt="Premium">
                 </div>
                 <div class="subscription-name">Premium</div>
             </div>
             
             <div class="subscription-option">
                 <div class="subscription-image">
-                    <img src="https://placehold.co/600x400" alt="Estándar">
+                    <img src="/media/dish_2.jpeg" alt="Estándar">
                 </div>
                 <div class="subscription-name">Estándar</div>
             </div>
@@ -372,8 +387,9 @@
         
         <h2 class="section-title">Categories</h2>
         
+        <!-- Categorías: redirige a búsqueda filtrada (ejemplo) -->
         <div class="categories">
-            <div class="category">
+            <div class="category" onclick="window.location.href='../search/search.html'" style="cursor:pointer;">
                 <div class="category-icon" style="background: #E6F2EA;">
                     <!-- Icono de platillos -->
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -383,7 +399,7 @@
                 <span class="category-name">Platillos</span>
             </div>
             
-            <div class="category">
+            <div class="category" onclick="window.location.href='../search/search.html'" style="cursor:pointer;">
                 <div class="category-icon" style="background: #FFE9E5;">
                     <!-- Icono de frutas -->
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -394,7 +410,7 @@
                 <span class="category-name">Frutas</span>
             </div>
             
-            <div class="category">
+            <div class="category" onclick="window.location.href='../search/search.html'" style="cursor:pointer;">
                 <div class="category-icon" style="background: #FFF6E3;">
                     <!-- Icono de jugos -->
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -405,7 +421,7 @@
                 <span class="category-name">Jugos</span>
             </div>
             
-            <div class="category">
+            <div class="category" onclick="window.location.href='../search/search.html'" style="cursor:pointer;">
                 <div class="category-icon" style="background: #F3EFFA;">
                     <!-- Icono de snacks -->
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -416,7 +432,7 @@
                 <span class="category-name">Snacks</span>
             </div>
             
-            <div class="category">
+            <div class="category" onclick="window.location.href='../search/search.html'" style="cursor:pointer;">
                 <div class="category-icon" style="background: #DCF4F5;">
                     <!-- Icono de bowls -->
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -430,20 +446,27 @@
         
         <h2 class="section-title">Productos destacados</h2>
         
+        <!-- Productos destacados: Añadir al carro redirige al carrito -->
+        <style>
+          .product-image {
+            border-radius: 20px;
+          }
+        </style>
+        
         <div class="products-grid">
             <!-- Producto 1 -->
             <div class="product-card">
                 <div class="product-badge badge-new">NEW</div>
                 <div class="product-image">
-                    <img src="https://placehold.co/200x150" alt="Ensalada de atún">
+                    <img src="/media/dish_1.jpeg" alt="Ensalada de atún">
                 </div>
                 <div class="product-info">
                     <div class="product-name">Ensalada de atún</div>
                     <div class="product-price">S/ 6.00</div>
                     <div class="product-unit">300 gr</div>
                     <div class="divider"></div>
-                    <div class="add-to-cart">
-                        <div class="add-to-cart-icon"></div>
+                    <div class="add-to-cart" onclick="window.location.href='../cart_empty/cart_empty.html'">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#6CC51D"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M2 1C1.44772 1 1 1.44772 1 2C1 2.55228 1.44772 3 2 3H3.21922L6.78345 17.2569C5.73276 17.7236 5 18.7762 5 20C5 21.6569 6.34315 23 8 23C9.65685 23 11 21.6569 11 20C11 19.6494 10.9398 19.3128 10.8293 19H15.1707C15.0602 19.3128 15 19.6494 15 20C15 21.6569 16.3431 23 18 23C19.6569 23 21 21.6569 21 20C21 18.3431 19.6569 17 18 17H8.78078L8.28078 15H18C20.0642 15 21.3019 13.6959 21.9887 12.2559C22.6599 10.8487 22.8935 9.16692 22.975 7.94368C23.0884 6.24014 21.6803 5 20.1211 5H5.78078L5.15951 2.51493C4.93692 1.62459 4.13696 1 3.21922 1H2ZM18 13H7.78078L6.28078 7H20.1211C20.6742 7 21.0063 7.40675 20.9794 7.81078C20.9034 8.9522 20.6906 10.3318 20.1836 11.3949C19.6922 12.4251 19.0201 13 18 13ZM18 20.9938C17.4511 20.9938 17.0062 20.5489 17.0062 20C17.0062 19.4511 17.4511 19.0062 18 19.0062C18.5489 19.0062 18.9938 19.4511 18.9938 20C18.9938 20.5489 18.5489 20.9938 18 20.9938ZM7.00617 20C7.00617 20.5489 7.45112 20.9938 8 20.9938C8.54888 20.9938 8.99383 20.5489 8.99383 20C8.99383 19.4511 8.54888 19.0062 8 19.0062C7.45112 19.0062 7.00617 19.4511 7.00617 20Z" fill="#6CC51D"></path> </g></svg>
                         Añadir al carro
                     </div>
                 </div>
@@ -452,15 +475,15 @@
             <!-- Producto 2 -->
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://placehold.co/200x150" alt="Bowl de quinua">
+                    <img src="/media/dish_2.jpeg" alt="Bowl de quinua">
                 </div>
                 <div class="product-info">
                     <div class="product-name">Bowl de quinua</div>
                     <div class="product-price">S/ 12.00</div>
                     <div class="product-unit">dozen</div>
                     <div class="divider"></div>
-                    <div class="add-to-cart">
-                        <div class="add-to-cart-icon"></div>
+                    <div class="add-to-cart" onclick="window.location.href='../cart_empty/cart_empty.html'">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#6CC51D"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M2 1C1.44772 1 1 1.44772 1 2C1 2.55228 1.44772 3 2 3H3.21922L6.78345 17.2569C5.73276 17.7236 5 18.7762 5 20C5 21.6569 6.34315 23 8 23C9.65685 23 11 21.6569 11 20C11 19.6494 10.9398 19.3128 10.8293 19H15.1707C15.0602 19.3128 15 19.6494 15 20C15 21.6569 16.3431 23 18 23C19.6569 23 21 21.6569 21 20C21 18.3431 19.6569 17 18 17H8.78078L8.28078 15H18C20.0642 15 21.3019 13.6959 21.9887 12.2559C22.6599 10.8487 22.8935 9.16692 22.975 7.94368C23.0884 6.24014 21.6803 5 20.1211 5H5.78078L5.15951 2.51493C4.93692 1.62459 4.13696 1 3.21922 1H2ZM18 13H7.78078L6.28078 7H20.1211C20.6742 7 21.0063 7.40675 20.9794 7.81078C20.9034 8.9522 20.6906 10.3318 20.1836 11.3949C19.6922 12.4251 19.0201 13 18 13ZM18 20.9938C17.4511 20.9938 17.0062 20.5489 17.0062 20C17.0062 19.4511 17.4511 19.0062 18 19.0062C18.5489 19.0062 18.9938 19.4511 18.9938 20C18.9938 20.5489 18.5489 20.9938 18 20.9938ZM7.00617 20C7.00617 20.5489 7.45112 20.9938 8 20.9938C8.54888 20.9938 8.99383 20.5489 8.99383 20C8.99383 19.4511 8.54888 19.0062 8 19.0062C7.45112 19.0062 7.00617 19.4511 7.00617 20Z" fill="#6CC51D"></path> </g></svg>
                         Añadir al carro
                     </div>
                 </div>
@@ -470,15 +493,15 @@
             <div class="product-card">
                 <div class="product-badge badge-discount">-16%</div>
                 <div class="product-image" style="background: #FEE1ED;">
-                    <img src="https://placehold.co/200x150" alt="Pechuga con vegetales">
+                    <img src="/media/dish_3.jpeg" alt="Pechuga con vegetales">
                 </div>
                 <div class="product-info">
                     <div class="product-name">Pechuga con vegetales</div>
                     <div class="product-price">S/ 12.00</div>
                     <div class="product-unit">5.0 lbs</div>
                     <div class="divider"></div>
-                    <div class="add-to-cart">
-                        <div class="add-to-cart-icon"></div>
+                    <div class="add-to-cart" onclick="window.location.href='../cart_empty/cart_empty.html'">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#6CC51D"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M2 1C1.44772 1 1 1.44772 1 2C1 2.55228 1.44772 3 2 3H3.21922L6.78345 17.2569C5.73276 17.7236 5 18.7762 5 20C5 21.6569 6.34315 23 8 23C9.65685 23 11 21.6569 11 20C11 19.6494 10.9398 19.3128 10.8293 19H15.1707C15.0602 19.3128 15 19.6494 15 20C15 21.6569 16.3431 23 18 23C19.6569 23 21 21.6569 21 20C21 18.3431 19.6569 17 18 17H8.78078L8.28078 15H18C20.0642 15 21.3019 13.6959 21.9887 12.2559C22.6599 10.8487 22.8935 9.16692 22.975 7.94368C23.0884 6.24014 21.6803 5 20.1211 5H5.78078L5.15951 2.51493C4.93692 1.62459 4.13696 1 3.21922 1H2ZM18 13H7.78078L6.28078 7H20.1211C20.6742 7 21.0063 7.40675 20.9794 7.81078C20.9034 8.9522 20.6906 10.3318 20.1836 11.3949C19.6922 12.4251 19.0201 13 18 13ZM18 20.9938C17.4511 20.9938 17.0062 20.5489 17.0062 20C17.0062 19.4511 17.4511 19.0062 18 19.0062C18.5489 19.0062 18.9938 19.4511 18.9938 20C18.9938 20.5489 18.5489 20.9938 18 20.9938ZM7.00617 20C7.00617 20.5489 7.45112 20.9938 8 20.9938C8.54888 20.9938 8.99383 20.5489 8.99383 20C8.99383 19.4511 8.54888 19.0062 8 19.0062C7.45112 19.0062 7.00617 19.4511 7.00617 20Z" fill="#6CC51D"></path> </g></svg>
                         Añadir al carro
                     </div>
                 </div>
@@ -487,15 +510,15 @@
             <!-- Producto 4 -->
             <div class="product-card">
                 <div class="product-image" style="background: #FFE6C2;">
-                    <img src="https://placehold.co/200x150" alt="Garbanzos con vegetales">
+                    <img src="/media/dish_4.jpeg" alt="Garbanzos con vegetales">
                 </div>
                 <div class="product-info">
                     <div class="product-name">Garbanzos con vegetales</div>
                     <div class="product-price">S/14.90</div>
                     <div class="product-unit">1.50 lbs</div>
                     <div class="divider"></div>
-                    <div class="add-to-cart">
-                        <div class="add-to-cart-icon"></div>
+                    <div class="add-to-cart" onclick="window.location.href='../cart_empty/cart_empty.html'">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#6CC51D"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M2 1C1.44772 1 1 1.44772 1 2C1 2.55228 1.44772 3 2 3H3.21922L6.78345 17.2569C5.73276 17.7236 5 18.7762 5 20C5 21.6569 6.34315 23 8 23C9.65685 23 11 21.6569 11 20C11 19.6494 10.9398 19.3128 10.8293 19H15.1707C15.0602 19.3128 15 19.6494 15 20C15 21.6569 16.3431 23 18 23C19.6569 23 21 21.6569 21 20C21 18.3431 19.6569 17 18 17H8.78078L8.28078 15H18C20.0642 15 21.3019 13.6959 21.9887 12.2559C22.6599 10.8487 22.8935 9.16692 22.975 7.94368C23.0884 6.24014 21.6803 5 20.1211 5H5.78078L5.15951 2.51493C4.93692 1.62459 4.13696 1 3.21922 1H2ZM18 13H7.78078L6.28078 7H20.1211C20.6742 7 21.0063 7.40675 20.9794 7.81078C20.9034 8.9522 20.6906 10.3318 20.1836 11.3949C19.6922 12.4251 19.0201 13 18 13ZM18 20.9938C17.4511 20.9938 17.0062 20.5489 17.0062 20C17.0062 19.4511 17.4511 19.0062 18 19.0062C18.5489 19.0062 18.9938 19.4511 18.9938 20C18.9938 20.5489 18.5489 20.9938 18 20.9938ZM7.00617 20C7.00617 20.5489 7.45112 20.9938 8 20.9938C8.54888 20.9938 8.99383 20.5489 8.99383 20C8.99383 19.4511 8.54888 19.0062 8 19.0062C7.45112 19.0062 7.00617 19.4511 7.00617 20Z" fill="#6CC51D"></path> </g></svg>
                         Añadir al carro
                     </div>
                 </div>
@@ -505,15 +528,15 @@
             <div class="product-card">
                 <div class="product-badge badge-new">NEW</div>
                 <div class="product-image" style="background: #FFE3E2;">
-                    <img src="https://placehold.co/200x150" alt="Bowl frutos rojos">
+                    <img src="/media/dish_5.jpeg" alt="Bowl frutos rojos">
                 </div>
                 <div class="product-info">
                     <div class="product-name">Bowl frutos rojos</div>
                     <div class="product-price">S/ 10.00</div>
                     <div class="product-unit">200 gr</div>
                     <div class="divider"></div>
-                    <div class="add-to-cart">
-                        <div class="add-to-cart-icon"></div>
+                    <div class="add-to-cart" onclick="window.location.href='../cart_empty/cart_empty.html'">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#6CC51D"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M2 1C1.44772 1 1 1.44772 1 2C1 2.55228 1.44772 3 2 3H3.21922L6.78345 17.2569C5.73276 17.7236 5 18.7762 5 20C5 21.6569 6.34315 23 8 23C9.65685 23 11 21.6569 11 20C11 19.6494 10.9398 19.3128 10.8293 19H15.1707C15.0602 19.3128 15 19.6494 15 20C15 21.6569 16.3431 23 18 23C19.6569 23 21 21.6569 21 20C21 18.3431 19.6569 17 18 17H8.78078L8.28078 15H18C20.0642 15 21.3019 13.6959 21.9887 12.2559C22.6599 10.8487 22.8935 9.16692 22.975 7.94368C23.0884 6.24014 21.6803 5 20.1211 5H5.78078L5.15951 2.51493C4.93692 1.62459 4.13696 1 3.21922 1H2ZM18 13H7.78078L6.28078 7H20.1211C20.6742 7 21.0063 7.40675 20.9794 7.81078C20.9034 8.9522 20.6906 10.3318 20.1836 11.3949C19.6922 12.4251 19.0201 13 18 13ZM18 20.9938C17.4511 20.9938 17.0062 20.5489 17.0062 20C17.0062 19.4511 17.4511 19.0062 18 19.0062C18.5489 19.0062 18.9938 19.4511 18.9938 20C18.9938 20.5489 18.5489 20.9938 18 20.9938ZM7.00617 20C7.00617 20.5489 7.45112 20.9938 8 20.9938C8.54888 20.9938 8.99383 20.5489 8.99383 20C8.99383 19.4511 8.54888 19.0062 8 19.0062C7.45112 19.0062 7.00617 19.4511 7.00617 20Z" fill="#6CC51D"></path> </g></svg>
                         Añadir al carro
                     </div>
                 </div>
@@ -522,15 +545,15 @@
             <!-- Producto 6 -->
             <div class="product-card">
                 <div class="product-image" style="background: #D2FFD0;">
-                    <img src="https://placehold.co/200x150" alt="Tacos con lentejas">
+                    <img src="/media/dish_7.png" alt="Tacos con lentejas">
                 </div>
                 <div class="product-info">
                     <div class="product-name">Tacos con lentejas</div>
                     <div class="product-price">S/ 15.00</div>
                     <div class="product-unit">150 gr c/u</div>
                     <div class="divider"></div>
-                    <div class="add-to-cart">
-                        <div class="add-to-cart-icon"></div>
+                    <div class="add-to-cart" onclick="window.location.href='../cart_empty/cart_empty.html'">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#6CC51D"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M2 1C1.44772 1 1 1.44772 1 2C1 2.55228 1.44772 3 2 3H3.21922L6.78345 17.2569C5.73276 17.7236 5 18.7762 5 20C5 21.6569 6.34315 23 8 23C9.65685 23 11 21.6569 11 20C11 19.6494 10.9398 19.3128 10.8293 19H15.1707C15.0602 19.3128 15 19.6494 15 20C15 21.6569 16.3431 23 18 23C19.6569 23 21 21.6569 21 20C21 18.3431 19.6569 17 18 17H8.78078L8.28078 15H18C20.0642 15 21.3019 13.6959 21.9887 12.2559C22.6599 10.8487 22.8935 9.16692 22.975 7.94368C23.0884 6.24014 21.6803 5 20.1211 5H5.78078L5.15951 2.51493C4.93692 1.62459 4.13696 1 3.21922 1H2ZM18 13H7.78078L6.28078 7H20.1211C20.6742 7 21.0063 7.40675 20.9794 7.81078C20.9034 8.9522 20.6906 10.3318 20.1836 11.3949C19.6922 12.4251 19.0201 13 18 13ZM18 20.9938C17.4511 20.9938 17.0062 20.5489 17.0062 20C17.0062 19.4511 17.4511 19.0062 18 19.0062C18.5489 19.0062 18.9938 19.4511 18.9938 20C18.9938 20.5489 18.5489 20.9938 18 20.9938ZM7.00617 20C7.00617 20.5489 7.45112 20.9938 8 20.9938C8.54888 20.9938 8.99383 20.5489 8.99383 20C8.99383 19.4511 8.54888 19.0062 8 19.0062C7.45112 19.0062 7.00617 19.4511 7.00617 20Z" fill="#6CC51D"></path> </g></svg>
                         Añadir al carro
                     </div>
                 </div>
@@ -538,8 +561,9 @@
         </div>
     </div>
     
+    <!-- Navegación inferior -->
     <div class="navigation">
-        <div class="nav-item">
+        <div class="nav-item" onclick="window.location.href='Home_main.html'" style="cursor:pointer;">
             <div class="nav-icon">
                 <!-- Icono de home -->
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -549,7 +573,7 @@
             </div>
         </div>
         
-        <div class="nav-item">
+        <div class="nav-item" onclick="window.location.href='../search/search.html'" style="cursor:pointer;">
             <div class="nav-icon">
                 <!-- Icono de categorías -->
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -558,7 +582,7 @@
             </div>
         </div>
         
-        <div class="nav-cart">
+        <div class="nav-cart" onclick="window.location.href='../cart_empty/cart_empty.html'" style="cursor:pointer;">
             <div class="nav-icon" style="background: white;">
                 <!-- Icono de carrito -->
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -567,7 +591,7 @@
             </div>
         </div>
         
-        <div class="nav-item">
+        <div class="nav-item" onclick="window.location.href='../account/Mis_favoritos.html'" style="cursor:pointer;">
             <div class="nav-icon">
                 <!-- Icono de favoritos -->
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -576,7 +600,7 @@
             </div>
         </div>
         
-        <div class="nav-item">
+        <div class="nav-item" onclick="window.location.href='../account/account.html'" style="cursor:pointer;">
             <div class="nav-icon">
                 <!-- Icono de perfil -->
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
