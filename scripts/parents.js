@@ -1,7 +1,38 @@
+/* 
+class User {
+    constructor(tel, mail, password) {
+        this.tel = tel;
+        this.mail = mail;
+        this.password = password;
+    }
+}
+
+
+var users = [
+    new User('123546789', 'joaquin@web.com', 'Hola1234')
+];
+
+function validateUser(){
+    const mail = document.getElementById("mail").value;
+    const mailErr = document.getElementById("mail-error");
+
+    const pass = document.getElementById("password").value;
+    const passErr = document.getElementById("password-error");
+
+}
+*/
+
 class LocalDatabase {
   constructor() {}
 
   setObj(obj) {
+    for (const key in obj) {
+      if (localStorage.getItem(key) !== null) continue;
+      this.set(key, obj[key])
+    }
+  }
+
+  forceSet(obj) {
     for (const key in obj) {
       this.set(key, obj[key])
     }
@@ -24,8 +55,8 @@ class LocalDatabase {
 let users = [
   {
     id: '79cbe3c8-4fd5-43d5-870f-3496fe21f45a',
-    name: 'Juan Pablo',
-    lastname: 'Perez Peralta',
+    image: '/media/users/juanpablo.jpg',
+    name: 'Juan Pablo Perez Peralta',
     email: 'juanpablo19@gmail.com',
     phone: '+51 975 252 532',
     password: 'yosoyjuanpablo123',
@@ -145,9 +176,25 @@ const mainObj = {
 
 //? Here add the init program data
 let db = new LocalDatabase();
-db.reset();
-db.setObj(mainObj);
+//! db.reset();
+db.forceSet(mainObj);
 
+const userController = {
+  getbyId(id) { //TODO Implement cache in the db
+    const users = db.get('users');
+    return users ? users.find(user => user.id === id) : null;
+  },
+  update(id, newObj) {
+    if (!newObj || newObj.id !== id) return false;
+    const users = db.get('users') || false;
+    if (users == false) return false;
+    const idx = users.findIndex(user => user.id === id);
+    if (idx === -1) return false;
+    users[idx] = newObj;
+    db.set('users', users);
+    return true;
+  }
+};
 const dishController = {
   createTemplate(dishId, userId) {
     const user = db.get('users').find(u => u.id === userId);
@@ -197,3 +244,7 @@ const dishController = {
     `;
   }
 };
+
+if (!db.get('current')) {
+  window.location.href = '/auth/login';
+}
