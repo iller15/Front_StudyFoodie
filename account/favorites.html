@@ -178,99 +178,94 @@
     <script>
       const get_back = document.getElementById('get_back');
       get_back.addEventListener('click', () => {
-        window.location.href = "/pages/account/account.html";
+        window.location.href = "/";
       })
     </script>
     <h1>Favoritos</h1>
   </header>
   
-  <main class="favorites-content">
-    <div class="favorites-list">
-      <!-- Item 1 -->
+<main class="favorites-content">
+  <div class="favorites-list" id="favorites-list"></div>
+</main>
+<script src="/scripts/parents.js"></script>
+<script>
+function renderFavorites() {
+  const userId = db.get('current');
+  const user = userController.getbyId(userId);
+  const dishes = db.get('dishes') || [];
+  const list = document.getElementById('favorites-list');
+  if (!user || !user.favorites || user.favorites.length === 0) {
+    list.innerHTML = '<p style="text-align:center;color:#868889;">No tienes favoritos aún.</p>';
+    return;
+  }
+  list.innerHTML = '';
+  user.favorites.forEach(favId => {
+    const dish = dishes.find(d => d.id === favId);
+    if (!dish) return;
+    const cartItem = user.cart.find(item => item.id === dish.id);
+    const quantity = cartItem ? cartItem.quantity : 0;
+    list.innerHTML += `
       <div class="favorite-item">
-        <div class="item-image" style="background-color: #FEE1ED;">
-          <img src="/media/dish_3.jpeg" alt="Garbanzos con vegetales">
+        <div class="item-image" style="background-color: #F4F5F9;">
+          <img src="${dish.image}" alt="${dish.name}">
         </div>
         <div class="item-info">
-          <h3>Garbanzos con vegetales</h3>
-          <div class="item-price">S/. 14.90 x 5</div>
-          <div class="item-weight">5.0 lbs</div>
+          <h3>${dish.name}</h3>
+          <div class="item-price">S/. ${dish.price.toFixed(2)}${quantity > 0 ? ' x ' + quantity : ''}</div>
+          <div class="item-weight">${dish.weight} gr</div>
         </div>
         <div class="item-quantity">
           <div class="quantity-divider"></div>
-          <span>5</span>
+          <span>${quantity}</span>
         </div>
-        <button class="remove-btn">
-          <svg viewBox="0 0 24 24" width="24" height="24">
-            <path fill="white" d="M19 13H5v-2h14v2z"/>
-          </svg>
-        </button>
+        <div style="display:flex;gap:8px;">
+          <button class="add-to-cart-btn" data-id="${dish.id}" title="Agregar al carrito" style="background:#6CC51D;color:#fff;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M12 6V18M6 12H18" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <button class="remove-from-cart-btn" data-id="${dish.id}" title="Quitar del carrito" style="background:#e01b24;color:#fff;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M6 12L18 12" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <button class="remove-favorite-btn" data-id="${dish.id}" title="Quitar de favoritos" style="background:#EF574B;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;">
+            <svg viewBox="0 0 24 24" width="20" height="20"><path fill="white" d="M19 13H5v-2h14v2z"/></svg>
+          </button>
+        </div>
       </div>
-      
-      <!-- Item 2 -->
-      <div class="favorite-item">
-        <div class="item-image">
-          <img src="/media/dish_2.jpeg" alt="Bowl frutos rojos">
-        </div>
-        <div class="item-info">
-          <h3>Bowl frutos rojos</h3>
-          <div class="item-price">S/ 10 x 2</div>
-          <div class="item-weight">1.50 lbs</div>
-        </div>
-        <div class="item-quantity">
-          <div class="quantity-divider"></div>
-          <span>2</span>
-        </div>
-        <button class="remove-btn">
-          <svg viewBox="0 0 24 24" width="24" height="24">
-            <path fill="white" d="M19 13H5v-2h14v2z"/>
-          </svg>
-        </button>
-      </div>
-      
-      <!-- Item 3 -->
-      <div class="favorite-item">
-        <div class="item-image" style="background-color: #FCFFD9;">
-          <img src="../media/dishes/dish_1.jpeg" alt="Bowl de quinua">
-        </div>
-        <div class="item-info">
-          <h3>Bowl de quinua</h3>
-          <div class="item-price">S/. 12.00 x 4</div>
-          <div class="item-weight">1.50 lbs</div>
-        </div>
-        <div class="item-quantity">
-          <div class="quantity-divider"></div>
-          <span>4</span>
-        </div>
-        <button class="remove-btn">
-          <svg viewBox="0 0 24 24" width="24" height="24">
-            <path fill="white" d="M19 13H5v-2h14v2z"/>
-          </svg>
-        </button>
-      </div>
-      
-      <!-- Item 4 -->
-      <div class="favorite-item">
-        <div class="item-image" style="background-color: #FFE6C2;">
-          <img src="../media/dishes/dish_1.jpeg" alt="Filete de pescado">
-        </div>
-        <div class="item-info">
-          <h3>Filete de pescado</h3>
-          <div class="item-price">S/. 19.00 x 3</div>
-          <div class="item-weight">dozen</div>
-        </div>
-        <div class="item-quantity">
-          <div class="quantity-divider"></div>
-          <span>3</span>
-        </div>
-        <button class="remove-btn">
-          <svg viewBox="0 0 24 24" width="24" height="24">
-            <path fill="white" d="M19 13H5v-2h14v2z"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </main>
+    `;
+  });
+
+  // Add to cart
+  document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+    btn.onclick = function() {
+      userController.addToCart(userId, this.getAttribute('data-id'), 1);
+      renderFavorites();
+    };
+  });
+  // Remove from cart
+  document.querySelectorAll('.remove-from-cart-btn').forEach(btn => {
+    btn.onclick = function() {
+      const dishId = this.getAttribute('data-id');
+      const cartItem = user.cart.find(item => item.id === dishId);
+      if (cartItem) {
+        if (cartItem.quantity > 1) {
+          cartItem.quantity -= 1;
+        } else {
+          user.cart = user.cart.filter(item => item.id !== dishId);
+        }
+        userController.update(userId, user);
+        renderFavorites();
+      }
+    };
+  });
+  // Remove from favorites
+  document.querySelectorAll('.remove-favorite-btn').forEach(btn => {
+    btn.onclick = function() {
+      userController.toggleFavorite(userId, this.getAttribute('data-id'));
+      renderFavorites();
+    };
+  });
+}
+renderFavorites();
+</script>
 </div>
 
 
