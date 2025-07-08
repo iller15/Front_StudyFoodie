@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-    <link rel="stylesheet" href="/styles/index.css">
-    <link rel="stylesheet" href="/styles/home.css">
-    <link rel="stylesheet" href="/styles/search.css">
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/search.css">
     
     <title>Study Foodie</title>
 </head>
@@ -92,11 +92,15 @@
       <h2 class="subscriptions-title">Suscripciones</h2>
       <div class="subscriptions_container">
         <div class="subscriptions_item" id="subscriptions-premium">
-          <img class="subscriptions_item-img" src="/media/dishes/premium.jpg" alt="">
+          <div class="subscriptions_item-img">
+            <img src="media/dishes/premium.jpg" alt="">
+          </div>
           <p class="subscriptions_item-text">Premium</p>
         </div>
         <div class="subscriptions_item" id="subscriptions-standar">
-          <img class="subscriptions_item-img" src="/media/dishes/estandar.jpg" alt="">
+          <div class="subscriptions_item-img">
+            <img src="media/dishes/estandar.jpg" alt="">
+          </div>
           <p class="subscriptions_item-text">Estandar</p>
         </div>
       </div>
@@ -121,7 +125,7 @@
         </svg>
       </div>
     </div>
-    <div class="nav-item" onclick="window.location.href='/pages/search/search.html'" style="cursor:pointer;">
+    <div class="nav-item" onclick="window.location.href='pages/search/search.html'" style="cursor:pointer;">
       <div class="nav-icon">
         <!-- Icono de categorías -->
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -130,14 +134,14 @@
       </div>
     </div>
     <div class="nav-item"></div>
-    <div class="nav-cart nav-item" onclick="window.location.href='/pages/cart_empty/cart_empty.html'" style="cursor:pointer;">
+    <div class="nav-cart nav-item" onclick="window.location.href='pages/cart_empty/cart_empty.html'" style="cursor:pointer;">
       <div class="nav-icon">
         <!-- Icono de carrito -->
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3.86376 16.4552C3.00581 13.0234 2.57684 11.3075 3.47767 10.1538C4.3785 9 6.14721 9 9.68462 9H14.3153C17.8527 9 19.6214 9 20.5222 10.1538C21.4231 11.3075 20.9941 13.0234 20.1362 16.4552C19.5905 18.6379 19.3176 19.7292 18.5039 20.3646C17.6901 21 16.5652 21 14.3153 21H9.68462C7.43476 21 6.30983 21 5.49605 20.3646C4.68227 19.7292 4.40943 18.6379 3.86376 16.4552Z" stroke="#f4f5f9" stroke-width="1.5"></path> <path opacity="0.5" d="M19.5 9.5L18.7896 6.89465C18.5157 5.89005 18.3787 5.38775 18.0978 5.00946C17.818 4.63273 17.4378 4.34234 17.0008 4.17152C16.5619 4 16.0413 4 15 4M4.5 9.5L5.2104 6.89465C5.48432 5.89005 5.62128 5.38775 5.90221 5.00946C6.18199 4.63273 6.56216 4.34234 6.99922 4.17152C7.43808 4 7.95872 4 9 4" stroke="#f4f5f9" stroke-width="1.5"></path> <path d="M9 4C9 3.44772 9.44772 3 10 3H14C14.5523 3 15 3.44772 15 4C15 4.55228 14.5523 5 14 5H10C9.44772 5 9 4.55228 9 4Z" stroke="#f4f5f9" stroke-width="1.5"></path> </g></svg>
         <span class="cart-bubble" id="cart-bubble" style="display:none;">0</span>
       </div>
     </div>
-    <div class="nav-item" onclick="window.location.href='/account/favorites.html'" style="cursor:pointer;">
+    <div class="nav-item" onclick="window.location.href='account/favorites.html'" style="cursor:pointer;">
       <div class="nav-icon">
         <!-- Icono de favoritos -->
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -145,7 +149,7 @@
         </svg>
       </div>
     </div>
-    <div class="nav-item" onclick="window.location.href='/account'" style="cursor:pointer;">
+    <div class="nav-item" onclick="window.location.href='account'" style="cursor:pointer;">
       <div class="nav-icon">
         <!-- Icono de perfil -->
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -155,8 +159,8 @@
     </div>
   </div>
 
-  <script src="/scripts/parents.js"></script>
-  <script src="/scripts/home.js"></script>
-  <script src="/scripts/search.js"></script>
+  <script src="scripts/parents.js"></script>
+  <script src="scripts/home.js"></script>
+  <script src="scripts/search.js"></script>
 </body>
 </html>
