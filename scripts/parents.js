@@ -300,4 +300,21 @@ userController.addToCart = function(userId, dishId, quantity = 1) {
   return true;
 };
 
+userController.toggleFavorite = function(userId, dishId) {
+  const users = db.get('users') || [];
+  const userIdx = users.findIndex(u => u.id === userId);
+  if (userIdx === -1) return false;
+  const user = users[userIdx];
+  if (!user.favorites) user.favorites = [];
+  const favIdx = user.favorites.indexOf(dishId);
+  if (favIdx === -1) {
+    user.favorites.push(dishId);
+  } else {
+    user.favorites.splice(favIdx, 1);
+  }
+  users[userIdx] = user;
+  db.set('users', users);
+  return true;
+};
+
 redirectAuth();

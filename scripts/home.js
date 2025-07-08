@@ -29,6 +29,20 @@ function renderDishes() {
     .map(dish => dishController.createTemplate(dish.id, userId))
     .join('');
 
+
+  // Favorite heart toggle
+  document.querySelectorAll('.favorite_action .icon.heart').forEach(btn => {
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    const dishItem = this.closest('.dish_item');
+    const dishId = dishItem ? dishItem.id : null;
+    const currentUserId = db.get('current');
+    if (!currentUserId) return;
+    userController.toggleFavorite(currentUserId, dishId);
+    renderDishes();
+    });
+  });
+
   // Add to cart
   document.querySelectorAll('.dish_item-add_cart-action .action-newadd').forEach(btn => {
     btn.addEventListener('click', function () {
@@ -90,3 +104,4 @@ window.addEventListener('DOMContentLoaded', function () {
   renderDishes();
   updateCartBubble();
 });
+
