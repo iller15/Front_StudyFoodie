@@ -183,7 +183,12 @@ const userController = {
   }
 };
 const dishController = {
+  get(dishId) {
+    const dishes = db.get('dishes') || [];
+    return dishes.find(dish => dish.id === dishId) || null;
+  },
   createTemplate(dishId, userId) {
+
     const user = db.get('users').find(u => u.id === userId);
     const dish = db.get('dishes').find(d => d.id === dishId);
     if (!user || !dish) return '';
@@ -215,7 +220,7 @@ const dishController = {
       `;
     }
     //! Dish image (placeholder if empty)
-    const imageDiv = `<div class="dish_item-image">${dish.image ? `<img src="${dish.image}" alt="${dish.name}"/>` : ''}</div>`;
+    const imageDiv = `<div class="dish_item-image" style="cursor:pointer;" onclick="window.location.href='/dish.html?id=${dish.id}'">${dish.image ? `<img src="${dish.image}" alt="${dish.name}"/>` : ''}</div>`;
     return `
       <div class="dish_item" id="${dish.id}">
         ${favoriteAction}
@@ -233,10 +238,8 @@ const dishController = {
   searchTemplate(dishObj) {
     if (!dishObj) return '';
     return `
-      <div class="search_container-item" onclick="window.location.href='/dish?id=${dishObj.id}'">
-        <div class="search_container-image">
-          ${dishObj.image ? `<img src="${dishObj.image}" alt="${dishObj.name}"/>` : ''}
-        </div>
+      <div class="search_container-item" onclick="window.location.href='/dish.html?id=${dishObj.id}'">
+        ${dishObj.image ? `<img class="search_container-image" src="${dishObj.image}" alt="${dishObj.name}"/>` : ''}
         <p class="search_container-name">${dishObj.name}</p>
         <p class="search_container-price">S/. ${dishObj.price.toFixed(2)}</p>
       </div>
