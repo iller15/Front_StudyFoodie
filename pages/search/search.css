@@ -67,8 +67,8 @@
       padding-left: 15px;
     }
     .section-title_input-search_container svg {
-      width: 25px;
-      height: 25px;
+      width: 25px !important;
+      height: 25px !important;
     }
 
     .section-main {
@@ -111,4 +111,8 @@
       border: 1px solid var(--color-border);
       color: var(--color-text-1);
       font-size: 14px;
+    }
+    #redirection-home {
+      height: 25px !important;
+      width: 25px !important;
     }
