@@ -108,6 +108,7 @@
             transition: all 0.3s ease;
             position: relative;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
         }
         
         .card.active {
@@ -249,6 +250,19 @@
             margin: 16px 0;
         }
         
+        .form-container {
+            display: none;
+            background: var(--white);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-container.show {
+            display: block;
+        }
+        
         .form-group {
             margin-bottom: 16px;
         }
@@ -354,6 +368,10 @@
             box-shadow: 0px 12px 12px rgba(108, 197, 29, 0.3);
         }
         
+        .cards-list {
+            margin-top: 24px;
+        }
+        
         @media (max-width: 900px) {
             .cards-container {
                 width: 95%;
@@ -371,117 +389,302 @@
     <div class="cards-container">
         <header class="header">
             <button class="back-button" id="redirect-account">←</button>
-            <script>
-              document.getElementById('redirect-account').onclick = function() {
-                window.location.href = '/pages/account/account.html';
-              };
-            </script>
             <h1>Mis tarjetas</h1>
-            <button class="add-button">+</button>
+            <button class="add-button" id="show-form">+</button>
         </header>
         
         <main class="content">
-            <div class="default-tag">Default</div>
+            <div class="form-container" id="card-form">
+                <div class="form-group">
+                    <label>Nombre en la tarjeta</label>
+                    <input type="text" id="card-name" placeholder="Nombre completo">
+                </div>
+                
+                <div class="form-group">
+                    <label>Número de tarjeta</label>
+                    <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Fecha de expiración</label>
+                        <input type="text" id="card-expiry" placeholder="MM/AA" maxlength="5">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>CVV</label>
+                        <input type="text" id="card-cvv" placeholder="123" maxlength="3">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Tipo de tarjeta</label>
+                    <select id="card-type" style="width: 100%; padding: 14px 16px; background-color: #F4F5F9; border: none; border-radius: 8px; font-size: 13px; color: #868889;">
+                        <option value="mastercard">Mastercard</option>
+                        <option value="visa">Visa</option>
+                    </select>
+                </div>
+                
+                <div class="form-checkbox">
+                    <input type="checkbox" id="default-card">
+                    <label for="default-card">Hacer predeterminada</label>
+                </div>
+                
+                <button class="save-button" id="save-card">Guardar tarjeta</button>
+            </div>
             
-            <div class="card active">
-                <div class="card-icon">
+            <div class="default-tag">Predeterminada</div>
+            
+            <div id="cards-list">
+                <!-- Las tarjetas existentes se mostrarán aquí -->
+                <div class="card active" data-id="1">
+                    <div class="card-icon">
+                        <div class="mastercard-logo">
+                            <div class="mastercard-circle-red"></div>
+                            <div class="mastercard-circle-yellow"></div>
+                            <div class="mastercard-circle-red-light"></div>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Master Card</h3>
+                        <p class="card-number">•••• •••• •••• 5678</p>
+                        <p class="card-detail">
+                            <span>Expiración: </span>
+                            <span>01/22</span>
+                        </p>
+                        <p class="card-detail">
+                            <span>CVV: </span>
+                            <span>•••</span>
+                        </p>
+                    </div>
+                    <div class="card-check active">✓</div>
+                </div>
+                
+                <div class="card" data-id="2">
+                    <div class="card-icon">
+                        <div class="visa-logo">
+                            <div class="visa-gold"></div>
+                            <div class="visa-blue"></div>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Visa Card</h3>
+                        <p class="card-number">•••• •••• •••• 9012</p>
+                        <p class="card-detail">
+                            <span>Expiración: </span>
+                            <span>03/23</span>
+                        </p>
+                        <p class="card-detail">
+                            <span>CVV: </span>
+                            <span>•••</span>
+                        </p>
+                    </div>
+                    <div class="card-check">○</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Redirección al perfil
+        document.getElementById('redirect-account').onclick = function() {
+            window.location.href = '/pages/account/account.html';
+        };
+
+        // Mostrar/ocultar formulario
+        const showFormBtn = document.getElementById('show-form');
+        const cardForm = document.getElementById('card-form');
+        
+        showFormBtn.addEventListener('click', function() {
+            cardForm.classList.toggle('show');
+            window.scrollTo(0, 0);
+        });
+
+        // Formatear número de tarjeta
+        document.getElementById('card-number').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+            let formatted = '';
+            
+            for (let i = 0; i < value.length; i++) {
+                if (i > 0 && i % 4 === 0) {
+                    formatted += ' ';
+                }
+                formatted += value[i];
+            }
+            
+            e.target.value = formatted;
+        });
+
+        // Formatear fecha de expiración
+        document.getElementById('card-expiry').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+            let formatted = '';
+            
+            if (value.length > 2) {
+                formatted = value.substring(0, 2) + '/' + value.substring(2, 4);
+            } else {
+                formatted = value;
+            }
+            
+            e.target.value = formatted;
+        });
+
+        // Validar CVV (solo números)
+        document.getElementById('card-cvv').addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/[^0-9]/gi, '');
+        });
+
+        // Guardar nueva tarjeta
+        document.getElementById('save-card').addEventListener('click', function() {
+            const cardName = document.getElementById('card-name').value;
+            const cardNumber = document.getElementById('card-number').value;
+            const cardExpiry = document.getElementById('card-expiry').value;
+            const cardCvv = document.getElementById('card-cvv').value;
+            const cardType = document.getElementById('card-type').value;
+            const isDefault = document.getElementById('default-card').checked;
+            
+            // Validaciones básicas
+            if (!cardName || !cardNumber || !cardExpiry || !cardCvv) {
+                alert('Por favor complete todos los campos');
+                return;
+            }
+            
+            if (cardNumber.replace(/\s/g, '').length !== 16) {
+                alert('El número de tarjeta debe tener 16 dígitos');
+                return;
+            }
+            
+            if (cardExpiry.length !== 5 || !cardExpiry.includes('/')) {
+                alert('Formato de fecha inválido (MM/AA)');
+                return;
+            }
+            
+            if (cardCvv.length !== 3) {
+                alert('El CVV debe tener 3 dígitos');
+                return;
+            }
+            
+            // Crear nueva tarjeta
+            const newCard = createCardElement({
+                id: Date.now(),
+                name: cardName,
+                number: cardNumber,
+                expiry: cardExpiry,
+                cvv: cardCvv,
+                type: cardType,
+                isDefault: isDefault
+            });
+            
+            // Añadir al inicio de la lista
+            const cardsList = document.getElementById('cards-list');
+            cardsList.insertBefore(newCard, cardsList.firstChild);
+            
+            // Si es predeterminada, marcar como activa
+            if (isDefault) {
+                setDefaultCard(newCard);
+            }
+            
+            // Limpiar formulario
+            document.getElementById('card-form').reset();
+            cardForm.classList.remove('show');
+            
+            // Mostrar mensaje de éxito
+            alert('Tarjeta añadida correctamente');
+        });
+
+        // Función para crear elemento de tarjeta
+        function createCardElement(cardData) {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.dataset.id = cardData.id;
+            
+            // Determinar el logo según el tipo de tarjeta
+            let logoHtml = '';
+            if (cardData.type === 'mastercard') {
+                logoHtml = `
                     <div class="mastercard-logo">
                         <div class="mastercard-circle-red"></div>
                         <div class="mastercard-circle-yellow"></div>
                         <div class="mastercard-circle-red-light"></div>
                     </div>
-                </div>
-                <div class="card-info">
-                    <h3>Master Card</h3>
-                    <p class="card-number">XXXX  XXXX  XXXX  5678</p>
-                    <p class="card-detail">
-                        <span>Expiry: </span>
-                        <span>01/22</span>
-                    </p>
-                    <p class="card-detail">
-                        <span>CVV: </span>
-                        <span>908</span>
-                    </p>
-                </div>
-                <div class="card-check active">✓</div>
-            </div>
-            
-            <div class="divider"></div>
-            
-            <div class="form-group">
-                <label>Nombre en la tarjeta</label>
-                <input type="text" placeholder="Sofia Silva">
-            </div>
-            
-            <div class="form-group">
-                <label>Número de tarjeta</label>
-                <input type="text" placeholder="XXXX  XXXX  XXXX  5678">
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Fecha de expiración</label>
-                    <input type="text" placeholder="01/22">
-                </div>
-                
-                <div class="form-group">
-                    <label>CVV</label>
-                    <input type="text" placeholder="908">
-                </div>
-            </div>
-            
-            <div class="form-checkbox">
-                <input type="checkbox" id="default-card" checked>
-                <label for="default-card">Hacer predeterminada</label>
-            </div>
-            
-            <button class="save-button">Guardar cambios</button>
-            
-            <div class="card">
-                <div class="card-icon">
+                `;
+            } else {
+                logoHtml = `
                     <div class="visa-logo">
                         <div class="visa-gold"></div>
                         <div class="visa-blue"></div>
                     </div>
-                </div>
-                <div class="card-info">
-                    <h3>Visa Card</h3>
-                    <p class="card-number">XXXX  XXXX  XXXX  5678</p>
-                    <p class="card-detail">
-                        <span>Expiry: </span>
-                        <span>01/22</span>
-                    </p>
-                    <p class="card-detail">
-                        <span>CVV: </span>
-                        <span>908</span>
-                    </p>
-                </div>
-                <div class="card-check">○</div>
-            </div>
+                `;
+            }
             
-            <div class="card">
+            // Obtener los últimos 4 dígitos
+            const lastFour = cardData.number.slice(-4);
+            
+            card.innerHTML = `
                 <div class="card-icon">
-                    <div class="mastercard-logo">
-                        <div class="mastercard-circle-red"></div>
-                        <div class="mastercard-circle-yellow"></div>
-                        <div class="mastercard-circle-red-light"></div>
-                    </div>
+                    ${logoHtml}
                 </div>
                 <div class="card-info">
-                    <h3>Master Card</h3>
-                    <p class="card-number">XXXX  XXXX  XXXX  5678</p>
+                    <h3>${cardData.type === 'mastercard' ? 'Master Card' : 'Visa Card'}</h3>
+                    <p class="card-number">•••• •••• •••• ${lastFour}</p>
                     <p class="card-detail">
-                        <span>Expiry: </span>
-                        <span>01/22</span>
+                        <span>Expiración: </span>
+                        <span>${cardData.expiry}</span>
                     </p>
                     <p class="card-detail">
                         <span>CVV: </span>
-                        <span>908</span>
+                        <span>•••</span>
                     </p>
                 </div>
                 <div class="card-check">○</div>
-            </div>
-        </main>
-    </div>
+            `;
+            
+            // Si es predeterminada, marcarla como activa
+            if (cardData.isDefault) {
+                card.classList.add('active');
+                card.querySelector('.card-check').textContent = '✓';
+                card.querySelector('.card-check').classList.add('active');
+            }
+            
+            // Manejar clic en la tarjeta para marcarla como predeterminada
+            card.addEventListener('click', function() {
+                setDefaultCard(this);
+            });
+            
+            return card;
+        }
+
+        // Función para establecer tarjeta predeterminada
+        function setDefaultCard(cardElement) {
+            // Quitar activo de todas las tarjetas
+            document.querySelectorAll('.card').forEach(card => {
+                card.classList.remove('active');
+                const check = card.querySelector('.card-check');
+                check.textContent = '○';
+                check.classList.remove('active');
+            });
+            
+            // Marcar esta tarjeta como activa
+            cardElement.classList.add('active');
+            const check = cardElement.querySelector('.card-check');
+            check.textContent = '✓';
+            check.classList.add('active');
+            
+            // Mover al inicio de la lista
+            const cardsList = document.getElementById('cards-list');
+            cardsList.insertBefore(cardElement, cardsList.firstChild);
+            
+            // Mostrar etiqueta de predeterminada
+            const defaultTag = document.querySelector('.default-tag');
+            defaultTag.textContent = 'Predeterminada';
+        }
+
+        // Manejar clic en las tarjetas existentes para marcarlas como predeterminadas
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', function() {
+                setDefaultCard(this);
+            });
+        });
+    </script>
 </body>
 </html>
