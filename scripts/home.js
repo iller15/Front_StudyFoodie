@@ -100,6 +100,7 @@ function renderDishes() {
   });
 }
 
+
 window.addEventListener('DOMContentLoaded', function () {
   renderDishes();
   updateCartBubble();
