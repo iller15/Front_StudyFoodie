@@ -57,9 +57,11 @@ let users = [
     id: '79cbe3c8-4fd5-43d5-870f-3496fe21f45a',
     image: '/media/users/juanpablo.jpg',
     name: 'Juan Pablo Perez Peralta',
-    email: 'juanpablo19@gmail.com',
+    //email: 'juanpablo19@gmail.com',
+    email: 'test@test.com',
     phone: '+51 975 252 532',
-    password: 'yosoyjuanpablo123',
+    //password: 'yosoyjuanpablo123',
+    password: '123',
     favorites: [
       '67390c50-f771-4c1e-b921-6703707cf4c4'
     ],
@@ -176,8 +178,9 @@ const mainObj = {
 
 //? Here add the init program data
 let db = new LocalDatabase();
-//! db.reset();
-db.forceSet(mainObj);
+// db.reset();
+//! db.forceSet(mainObj);
+db.setObj(mainObj);
 
 const userController = {
   getbyId(id) { //TODO Implement cache in the db
@@ -193,6 +196,16 @@ const userController = {
     users[idx] = newObj;
     db.set('users', users);
     return true;
+  },
+  authLogin(email, password) {
+    const users = db.get('users') || [];
+    const user = users.find(u => u.email === email && u.password === password);
+    console.log('User authlogin > ' + user);
+    if (user) {
+      db.set('current', user.id);
+      return user;
+    }
+    return null;
   }
 };
 const dishController = {
@@ -245,6 +258,19 @@ const dishController = {
   }
 };
 
-if (!db.get('current')) {
-  window.location.href = '/auth/login';
+async function redirectAuth() {
+  if (db.get('current') == false) {
+    const path = window.location.pathname;
+    if (path.endsWith('/auth/login.html') || path.endsWith('/auth/register.html')) {
+      console.info('> Not redirection already in auth page');
+      return;
+    }
+    else {
+      window.location.href = '/auth/login.html';
+      console.log('> Redirected from function parent');
+      return;
+    }
+  }
 }
+
+redirectAuth();
