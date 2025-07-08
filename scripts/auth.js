@@ -1,6 +1,35 @@
+//? Login page
+try {
+  function _helperLogin() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const response = userController.authLogin(email, password);
+    console.log('After submit  >> ' + response);
+    if (!response) {
+      //TODO Implement error control
+      console.log('Bad response');
+    } else {
+      window.location.href = "/";
+      console.log(response);
+    }
+  }
 
-
-
+  const loginForm = document.getElementById('login-form');
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    _helperLogin();
+  });
+  document.getElementById('login-btn').addEventListener('click', (e) => {
+    e.preventDefault();
+    _helperLogin();
+  });
+  document.getElementById('submit-input-login').addEventListener('submit', (e) => {
+    e.preventDefault();
+    _helperLogin();
+  });
+} catch (e) {
+  console.log('> Error in login page auth/script' + e);
+}
 
 /* Old code from separates files
 // Registro de sesion
