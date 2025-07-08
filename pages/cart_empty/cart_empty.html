@@ -39,22 +39,172 @@
   </div>
   <script>
     document.getElementById('redirect-home').addEventListener('click', function() {
-      window.location.href = '/pages/home/Home_main.html';
+      window.location.href = '/index.html';
     });
   </script>
 
+ 
+
+  <script src="/scripts/parents.js"></script>
+  <!-- ...funcionalidad carrito... -->
+
   <div class="section-main">
     <div class="section-main_container">
-      <div class="section-main_content">
+      <div id="cart-list"></div>
+      <div class="cart-total" id="cart-total" style="display:none;">
+        <span>Total:</span>
+        <span id="cart-total-amount">S/. 0.00</span>
+      </div>
+      <button class="section-main_button" id="shop-more-btn" style="display:none;">
+        <p class="section-main_button-text">Empezar a comprar</p>
+      </button>
+      <button class="section-main_button" id="payout-btn" style="display:none;background:#6CC51D;color:#fff;margin-top:16px;">
+        <p class="section-main_button-text">Proceder al pago</p>
+      </button>
+      <div class="section-main_content" id="empty-cart-message" style="display:none;">
         <svg width="99" height="115" viewBox="0 0 99 115" fill="none" xmlns="http://www.w3.org/2000/svg" class="section-main_content-icon">
           <path d="M98.9747 99.408L91.8924 25.2577C91.7407 23.6115 90.2483 22.365 88.5031 22.365H73.9338C73.7315 9.99489 62.8551 0 49.5 0C36.1449 0 25.2685 9.99489 25.0662 22.365H10.4969C8.72637 22.365 7.25933 23.6115 7.10756 25.2577L0.0252944 99.408C0.0252944 99.502 0 99.5961 0 99.6902C0 108.133 8.32166 115 18.5657 115H80.4343C90.6783 115 99 108.133 99 99.6902C99 99.5961 99 99.502 98.9747 99.408ZM49.5 6.34969C59.0864 6.34969 66.9021 13.499 67.1045 22.365H31.8955C32.0979 13.499 39.9136 6.34969 49.5 6.34969ZM80.4343 108.65H18.5657C12.141 108.65 6.93051 104.699 6.82933 99.8313L13.6081 28.7382H25.0409V38.3804C25.0409 40.1442 26.5585 41.5552 28.4555 41.5552C30.3526 41.5552 31.8702 40.1442 31.8702 38.3804V28.7382H67.1045V38.3804C67.1045 40.1442 68.6221 41.5552 70.5192 41.5552C72.4162 41.5552 73.9338 40.1442 73.9338 38.3804V28.7382H85.3666L92.1707 99.8313C92.0695 104.699 86.8337 108.65 80.4343 108.65Z" fill="#6CC51D"/>
         </svg>
-        <p class="section-main_content-text">Tu carrito esta vacio</p>
+        <p class="section-main_content-text">Tu carrito está vacío</p>
       </div>
-      <button class="section-main_button">
-        <p class="section-main_button-text">Empezar a comprar</p>
-      </button>
     </div>
   </div>
+  <script src="/scripts/parents.js"></script>
+  <script>
+    function renderCart() {
+      const cartList = document.getElementById('cart-list');
+      const cartTotal = document.getElementById('cart-total');
+      const cartTotalAmount = document.getElementById('cart-total-amount');
+      const shopMoreBtn = document.getElementById('shop-more-btn');
+      const payoutBtn = document.getElementById('payout-btn');
+      const emptyCartMsg = document.getElementById('empty-cart-message');
+      const currentUserId = localStorage.getItem('current') && JSON.parse(localStorage.getItem('current'));
+      let user = null;
+      let dishes = [];
+      let total = 0;
+
+      if (currentUserId) {
+        const users = JSON.parse(localStorage.getItem('users') || '[]');
+        user = users.find(u => u.id === currentUserId);
+        dishes = JSON.parse(localStorage.getItem('dishes') || '[]');
+      }
+
+      if (user && user.cart && user.cart.length > 0) {
+        cartList.innerHTML = '';
+        user.cart.forEach((item, idx) => {
+          const dish = dishes.find(d => d.id === item.id);
+          if (!dish) return;
+          const subtotal = dish.price * item.quantity;
+          total += subtotal;
+          cartList.innerHTML += `
+            <div class="cart-item" style="display:flex;align-items:center;gap:15px;margin-bottom:20px;background:#fff;border-radius:12px;padding:15px;position:relative;">
+              <div style="width:70px;height:70px;display:flex;align-items:center;justify-content:center;background:#f4f5f9;border-radius:50%;">
+                <img src="${dish.image}" alt="${dish.name}" style="width:60px;height:60px;object-fit:cover;border-radius:50%;">
+              </div>
+              <div style="flex:1;">
+                <div style="font-weight:600;font-size:16px;">${dish.name}</div>
+                <div style="color:#6CC51D;font-weight:500;">S/. ${dish.price.toFixed(2)} x ${item.quantity}</div>
+                <div style="color:#868889;font-size:13px;">${dish.weight} gr</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <button class="cart-decrease-btn" data-idx="${idx}" style="background:none;border:none;cursor:pointer;padding:0 4px;">
+                  <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M6 12L18 12" stroke="#6cc51d" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+                <span style="font-size:16px;font-weight:600;color:#868889;">${item.quantity}</span>
+                <button class="cart-increase-btn" data-idx="${idx}" style="background:none;border:none;cursor:pointer;padding:0 4px;">
+                  <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M12 6V18M6 12H18" stroke="#6cc51d" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+                <button class="cart-delete-btn" data-idx="${idx}" title="Eliminar" style="background:none;border:none;cursor:pointer;padding:0 4px;">
+                  <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M6 6L18 18M6 18L18 6" stroke="#e01b24" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+              </div>
+              <div style="font-size:15px;font-weight:600;color:#222;">S/. ${(subtotal).toFixed(2)}</div>
+            </div>
+          `;
+        });
+        cartTotalAmount.textContent = `S/. ${total.toFixed(2)}`;
+        cartTotal.style.display = 'flex';
+        shopMoreBtn.style.display = 'none';
+        payoutBtn.style.display = 'block';
+        cartList.style.display = '';
+        emptyCartMsg.style.display = 'none';
+
+        // Decrease quantity
+        document.querySelectorAll('.cart-decrease-btn').forEach(btn => {
+          btn.onclick = function() {
+            const idx = parseInt(this.getAttribute('data-idx'));
+            if (user && user.cart && user.cart[idx]) {
+              if (user.cart[idx].quantity > 1) {
+                user.cart[idx].quantity -= 1;
+              } else {
+                user.cart.splice(idx, 1);
+              }
+              const users = JSON.parse(localStorage.getItem('users') || '[]');
+              const userIdx = users.findIndex(u => u.id === user.id);
+              if (userIdx !== -1) {
+                users[userIdx] = user;
+                localStorage.setItem('users', JSON.stringify(users));
+              }
+              renderCart();
+            }
+          };
+        });
+
+        // Increase quantity
+        document.querySelectorAll('.cart-increase-btn').forEach(btn => {
+          btn.onclick = function() {
+            const idx = parseInt(this.getAttribute('data-idx'));
+            if (user && user.cart && user.cart[idx]) {
+              user.cart[idx].quantity += 1;
+              const users = JSON.parse(localStorage.getItem('users') || '[]');
+              const userIdx = users.findIndex(u => u.id === user.id);
+              if (userIdx !== -1) {
+                users[userIdx] = user;
+                localStorage.setItem('users', JSON.stringify(users));
+              }
+              renderCart();
+            }
+          };
+        });
+
+        // Delete plate
+        document.querySelectorAll('.cart-delete-btn').forEach(btn => {
+          btn.onclick = function() {
+            const idx = parseInt(this.getAttribute('data-idx'));
+            if (user && user.cart && user.cart[idx]) {
+              user.cart.splice(idx, 1);
+              const users = JSON.parse(localStorage.getItem('users') || '[]');
+              const userIdx = users.findIndex(u => u.id === user.id);
+              if (userIdx !== -1) {
+                users[userIdx] = user;
+                localStorage.setItem('users', JSON.stringify(users));
+              }
+              renderCart();
+            }
+          };
+        });
+
+      } else {
+        cartList.innerHTML = '';
+        cartTotal.style.display = 'none';
+        shopMoreBtn.style.display = 'block';
+        payoutBtn.style.display = 'none';
+        cartList.style.display = 'none';
+        emptyCartMsg.style.display = 'flex';
+      }
+    }
+
+    renderCart();
+
+    document.getElementById('shop-more-btn').onclick = function() {
+      window.location.href = '/';
+    };
+
+    document.getElementById('payout-btn').onclick = function() {
+      window.location.href = '/pages/transaction/transactions.html';
+    };
+  </script>
+<!-- ...existing code... -->
+
 </body>
 </html> 

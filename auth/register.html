@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creación De Cuenta</title>
-    <link rel="stylesheet" href="crear_cuenta.css">
+    <link rel="stylesheet" href="/styles/auth.css">
 </head>
     <body>
         <div class="login-container">
@@ -14,22 +14,25 @@
                 <span class="welcome-text">Welcome</span>
                 <div class="main-img"><img src="../../media/compra_saludable_feliz.png" alt=""></div>
             </div>
-            <form class="login-form">
+            <form class="login-form" onsubmit="return validateForm()" onreset="resetErrors()">
                 <h1>Crea tu cuenta</h1>
                 <div class="subtitle">Crea una nueva cuenta personal</div>
                 <div class="input-group">
                     <div class="input-icon email"><img src="../../media/email_icon.png" alt=""></div>
-                    <input type="email" placeholder="Correo electronico" required>
+                    <input id="mail" type="email" placeholder="Correo electronico" required>
                 </div>
+                <span id="mail-error" class="error-message"></span>
                 <div class="input-group">
                     <div class="input-icon phone"><img src="../../media/phone_icon.png" alt=""></div>
-                    <input type="tel" placeholder="Numero de telefono" required>
+                    <input id="tel" type="tel" placeholder="Numero de telefono" required>
                 </div>
+                <span id="tel-error" class="error-message"></span>
                 <div class="input-group">
                     <div class="input-icon lock"><img src="../../media/lock_icon.png" alt=""></div>
-                    <input type="password" placeholder="********" required>
+                    <input id="pass" type="password" placeholder="********" required>
                     <div class="input-eye"><img src="../../media/eye_icon.png" alt=""></div>
                 </div>
+                <span id="pass-error" class="error-message"></span>
                 <button type="submit" class="login-btn">Signup</button>
                 <div class="signup-row">
                     ¿Ya tiene una cuenta creada ?
