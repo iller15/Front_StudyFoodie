@@ -30,6 +30,21 @@ body {
   margin: 25px 0;
   border-radius: 5px;
 }
+.promotion_banner-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  overflow: hidden
+}
+
+.promotion_banner-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  display: block;
+}
+
 .promotion_banner-text {
   position: absolute;
   max-width: 450px;
@@ -38,7 +53,7 @@ body {
   color: var(--color-black);
   left: 0;
   bottom: 0;
-  padding: 100px 70px;
+  padding: 183px 10px;
 }
 
 /*? Categories styles ?*/
@@ -112,6 +127,26 @@ body {
 .subscriptions_item {
   width: 300px;
 }
+
+.subscriptions_item-img {
+ width: 100%;
+  height: 150px;
+  background-color: antiquewhite; /* or any color you want */
+  border-radius: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} 
+
+.subscriptions_item-img img {
+  width: 80%;
+  height: 80%;
+  border-radius: 60px;
+  display: block;
+  margin: auto;
+  object-fit: cover;
+}
+
 .subscriptions_item .image {
   width: 100%;
   height: 150px;
@@ -168,7 +203,19 @@ body {
   background-color: cadetblue;
   border-radius: 60px;
   margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.dish_item-image img {
+   width: 85%;
+  height: 85%;
+  object-fit: cover;
+  border-radius: 60px; /* Match the parent for identical shape */
+  display: block;
+  margin: auto;
+}
+
 .dish_item-price {
   font-weight: bold;
   color: var(--color-primary-dark);
