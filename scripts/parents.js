@@ -50,6 +50,8 @@ class LocalDatabase {
   }
 }
 
+
+
 //TODO Add a variable to load only 1 time, using the constructor
 //! Test data inserted in loading page every time
 let users = [
@@ -279,5 +281,23 @@ async function redirectAuth() {
     }
   }
 }
+
+
+userController.addToCart = function(userId, dishId, quantity = 1) {
+  const users = db.get('users') || [];
+  const userIdx = users.findIndex(u => u.id === userId);
+  if (userIdx === -1) return false;
+  const user = users[userIdx];
+  if (!user.cart) user.cart = [];
+  const cartItem = user.cart.find(item => item.id === dishId);
+  if (cartItem) {
+    cartItem.quantity += quantity;
+  } else {
+    user.cart.push({ id: dishId, quantity });
+  }
+  users[userIdx] = user;
+  db.set('users', users);
+  return true;
+};
 
 redirectAuth();
