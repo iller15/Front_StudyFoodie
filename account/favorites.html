@@ -154,11 +154,12 @@
     transform: scale(1.1);
   }
   
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     .favorites-container {
       margin: 0;
       border-radius: 0;
       min-height: 100vh;
+      min-width: 100%;
     }
     
     .favorite-item {
@@ -187,7 +188,7 @@
 <main class="favorites-content">
   <div class="favorites-list" id="favorites-list"></div>
 </main>
-<script src="/scripts/parents.js"></script>
+<script src="../scripts/parents.js"></script>
 <script>
 function renderFavorites() {
   const userId = db.get('current');

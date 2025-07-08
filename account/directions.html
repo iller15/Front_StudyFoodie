@@ -313,6 +313,21 @@
           <label for="default-address">Predeterminado</label>
         </div>
         
+        <div class="form-group">
+          <label>País</label>
+          <input type="text" placeholder="Pais">
+        </div>
+        
+        <div class="form-group">
+          <label>Número de teléfono</label>
+          <input type="tel" placeholder="Numero de telefono" required>
+        </div>
+        
+        <div class="form-checkbox">
+          <input type="checkbox" id="default-address" checked>
+          <label for="default-address">Predeterminado</label>
+        </div>
+        
         <button class="save-button">Guardar cambios</button>
       </div>
     </main>
@@ -338,6 +353,30 @@
         window.scrollTo(0, document.body.scrollHeight);
       });
       
+      <button class="save-button">Guardar cambios</button>
+    </main>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Elementos del DOM
+      const saveButton = document.querySelector('.save-button');
+      const addressForm = document.querySelector('.address-form');
+      const addressSection = document.querySelector('.address-section');
+      const addButton = document.querySelector('.add-button');
+      const backButton = document.querySelector('.back-button');
+      
+      // Botón de retroceso
+      backButton.addEventListener('click', function() {
+        window.history.back();
+      });
+      
+      // Botón de añadir (muestra el formulario)
+      addButton.addEventListener('click', function() {
+        addressForm.style.display = 'block';
+        window.scrollTo(0, document.body.scrollHeight);
+      });
+   
       // Función para crear nueva tarjeta de dirección
       function createAddressCard(data) {
         const card = document.createElement('div');
