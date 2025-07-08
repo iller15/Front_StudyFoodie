@@ -1,0 +1,42 @@
+#search-dish {
+  position: relative;
+}
+.search_container-values {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  z-index: 100;
+}
+.search_container-values:last-child {
+  border-bottom: none;
+}
+.search_container-item {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding-left: 30px;
+  width: 100%;
+  height: 65px;
+  background-color: #fdfdfdcc;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+.search_container-item:hover {
+  background-color: #f0f0f0;
+}
+.search_container-image {
+  height: 45px;
+  width: 94px;
+  background-color: antiquewhite;
+  margin-right: 20px;
+  border-radius: 15px;
+}
+.search_container-price {
+  text-align: right;
+  flex: 1;
+  padding-right: 50px;
+}
