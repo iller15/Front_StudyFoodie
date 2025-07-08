@@ -120,34 +120,6 @@ let dishes = [
     weight: 150,
   },
   {
-    id: 'a177359c-7847-4abb-9393-13dc018dce43',
-    image: '',
-    name: 'Bowl de quinua',
-    price: 12.00,
-    weight: 450,
-  },
-  {
-    id: '60391489-3352-47df-a6d7-078180f6ba3d',
-    image: '',
-    name: 'Bowl de quinua',
-    price: 12.00,
-    weight: 450,
-  },
-  {
-    id: 'deeab838-7817-4486-89a5-6762f3a8d1a1',
-    image: '',
-    name: 'Bowl de quinua',
-    price: 12.00,
-    weight: 450,
-  },
-  {
-    id: '8b339be2-4003-4666-a997-24c5a0215001',
-    image: '',
-    name: 'Bowl de quinua',
-    price: 12.00,
-    weight: 450,
-  },
-  {
     id: 'f2c9e7b1-1c4a-4e8a-8e2e-9a7b2e8d9c3f',
     image: '',
     name: 'Sopa de verduras',
@@ -255,6 +227,41 @@ const dishController = {
         </div>
       </div>
     `;
+  },
+  searchTemplate(dishObj) {
+    if (!dishObj) return '';
+    return `
+      <div class="search_container-item" onclick="window.location.href='/dish?id=${dishObj.id}'">
+        <div class="search_container-image">
+          ${dishObj.image ? `<img src="${dishObj.image}" alt="${dishObj.name}"/>` : ''}
+        </div>
+        <p class="search_container-name">${dishObj.name}</p>
+        <p class="search_container-price">S/. ${dishObj.price.toFixed(2)}</p>
+      </div>
+    `;
+  },
+  search(query) {
+    const dishes = db.get('dishes') || [];
+    if (!query || typeof query !== 'string') return [];
+    const lowerQuery = query.trim().toLowerCase();
+    if (!lowerQuery) return [];
+    let results = dishes.filter(dish =>
+      dish.name.toLowerCase().includes(lowerQuery)
+    );
+    function letterSimilarity(a, b) {
+      const setA = new Set(a.replace(/\s/g, '').split(''));
+      const setB = new Set(b.replace(/\s/g, '').split(''));
+      const intersection = new Set([...setA].filter(x => setB.has(x)));
+      const union = new Set([...setA, ...setB]);
+      return intersection.size / union.size;
+    }
+    if (results.length === 0 && lowerQuery.length >= 2) {
+      results = dishes.filter(dish => {
+        const name = dish.name.toLowerCase();
+        return letterSimilarity(name, lowerQuery) >= 0.2;
+      });
+    }
+    return results;
   }
 };
 
